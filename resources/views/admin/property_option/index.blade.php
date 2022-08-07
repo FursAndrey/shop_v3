@@ -1,0 +1,48 @@
+@extends('../admin/main')
+
+@section('title') Значение свойства @endsection
+
+@section('header_styles')
+@endsection
+
+@section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success ">
+            <p class="text-center">{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('warning'))
+        <div class="alert alert-warning ">
+            <p class="text-center">{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('danger'))
+        <div class="alert alert-danger ">
+            <p class="text-center">{{ $message }}</p>
+        </div>
+    @endif
+    <h2>Значение свойства</h2>
+    <a class="btn btn-success" href="{{ route('property_option.create') }}">Добавить значение свойства</a>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Название RU</th>
+            <th>Название EN</th>
+            <th></th>
+        </tr>
+        @foreach ($propertyOptions as $option)
+            <tr>
+                <td><a href="{{ route('property_option.show', $option) }}" class="btn btn-info">{{ $option->name_ru }}</a></td>
+                <td><a href="{{ route('property_option.show', $option) }}" class="btn btn-info">{{ $option->name_en }}</a></td>
+                <td>
+                    <a href="{{ route('property_option.edit', $option) }}" class="btn btn-warning d-inline-block">Редактировать</a>
+                    <form action="{{ route('property_option.destroy', $option) }}" method="POST" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+    {{ $propertyOptions->links() }}
+@endsection
