@@ -41,5 +41,7 @@ Route::get('product/create_for_category/{category}', [ProductController::class, 
 Route::get('sku/create_for_product/{product}', [SkuController::class, 'create_for_product'])->name('sku.create_for_product');
 Route::get('user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('user/show/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('role/create_for_user/{user}', [RoleController::class, 'create_for_user'])->name('role.create_for_user');
+Route::post('role/add_role/{user}', [RoleController::class, 'add_role'])->name('role.add_role');
 
 require __DIR__.'/auth.php';

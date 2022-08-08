@@ -26,11 +26,19 @@
         <tr>
             <th>Логин</th>
             <th>Почта</th>
+            <th>Роли</th>
+            <th></th>
         </tr>
         @foreach ($users as $user)
             <tr>
                 <td><a href="{{ route('user.show', $user) }}" class="btn btn-info">{{ $user->name }}</a></td>
                 <td>{{ $user->email }}</td>
+                <td>
+                    @foreach ($user->roles as $role)
+                        {{ $role->name_ru }}/{{ $role->name_en }}<br/>
+                    @endforeach
+                </td>
+                <td><a href="{{ route('role.create_for_user', $user) }}" class="btn btn-primary d-inline-block">Добавить роль</a></td>
             </tr>
         @endforeach
     </table>

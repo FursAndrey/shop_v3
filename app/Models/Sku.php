@@ -28,6 +28,6 @@ class Sku extends Model
 
     public function property_options()
     {
-        return $this->belongsToMany(PropertyOption::class)->withTimestamps();;
+        return $this->belongsToMany(PropertyOption::class)->withTimestamps();
     }
 }

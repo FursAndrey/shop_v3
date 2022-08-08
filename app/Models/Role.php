@@ -15,4 +15,9 @@ class Role extends Model
         'description_ru',
         'description_en',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
 use App\Models\Role;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
@@ -89,5 +91,18 @@ class RoleController extends Controller
         $txt = 'Роль '.$role->name_ru.'/'.$role->name_en.' удалена.';
         $role->delete();
         return redirect()->route('role.index')->with('danger', $txt);
+    }
+    
+    public function create_for_user(User $user)
+    {
+        $roles = Role::get();
+        return view('admin.role.form_for_user', compact(['user', 'roles']));
+    }
+
+    public function add_role(Request $request, User $user)
+    {
+        $user->roles()->sync($request->role_id);
+        $txt = 'Пользователю добавлена новая роль';
+        return redirect()->route('user.index')->with('danger', $txt);
     }
 }
