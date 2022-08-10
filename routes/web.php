@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PropertyOptionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SkuController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,15 +22,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['userIsAdmin'])->name('dashboard');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('userIsAdmin')->group(function () {
     Route::resource('category', CategoriesController::class);
     Route::resource('currency', CurrencyController::class);
     Route::resource('product', ProductController::class);
@@ -45,5 +42,7 @@ Route::prefix('admin')->group(function () {
     Route::get('role/create_for_user/{user}', [RoleController::class, 'create_for_user'])->name('role.create_for_user');
     Route::post('role/add_role/{user}', [RoleController::class, 'add_role'])->name('role.add_role');
 });
+
+Route::get('/', [PageController::class, 'skuList'])->name('skuListPage');
 
 require __DIR__.'/auth.php';
