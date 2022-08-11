@@ -12,4 +12,10 @@ class PageController extends Controller
         $skus = Sku::with(['product', 'currency'])->paginate(8);
         return view('shop.skuList', compact('skus'));
     }
+
+    public function skuPage(int $sku_id)
+    {
+        $sku = Sku::with(['product', 'currency'])->find($sku_id);
+        return view('shop.skuPage', compact('sku'));
+    }
 }

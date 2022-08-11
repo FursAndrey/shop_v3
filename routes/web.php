@@ -44,5 +44,6 @@ Route::prefix('admin')->middleware('userIsAdmin')->group(function () {
 });
 
 Route::get('/', [PageController::class, 'skuList'])->name('skuListPage');
+Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage');
 
 require __DIR__.'/auth.php';
