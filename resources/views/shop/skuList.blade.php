@@ -25,10 +25,11 @@
     <div class="container">
         <div class="row">
             @foreach ($skus as $sku)
-                <div class="col-3">
+                <div class="col-3 mb-5 mt-3">
                     <a href="#"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 200px;"></a>
                     <h4>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</h4>
                     <p>{{ $sku->price }} {{ $sku->currency->code }}</p>
+                    <a class="btn btn-success" href="#">Добавить в корзину</a>
                 </div>
             @endforeach
         </div>
