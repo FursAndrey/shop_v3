@@ -22,7 +22,7 @@
         </div>
     @endif
     <h2>Продукты</h2>
-    <a class="btn btn-success" href="{{ route('product.create') }}">Добавить продукт</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('product.create') }}">Добавить продукт</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Ивображение</th>

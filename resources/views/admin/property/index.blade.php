@@ -22,7 +22,7 @@
         </div>
     @endif
     <h2>Свойства</h2>
-    <a class="btn btn-success" href="{{ route('property.create') }}">Добавить свойство</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('property.create') }}">Добавить свойство</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название RU</th>

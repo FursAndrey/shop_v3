@@ -22,7 +22,7 @@
         </div>
     @endif
     <h2>СКУ</h2>
-    <a class="btn btn-success" href="{{ route('sku.create') }}">Добавить СКУ</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('sku.create') }}">Добавить СКУ</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>ID ску</th>

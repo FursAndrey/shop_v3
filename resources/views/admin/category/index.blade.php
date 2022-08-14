@@ -22,7 +22,7 @@
         </div>
     @endif
     <h2>Категории</h2>
-    <a class="btn btn-success" href="{{ route('category.create') }}">Добавить категорию</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('category.create') }}">Добавить категорию</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Код</th>

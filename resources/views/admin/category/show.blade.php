@@ -7,7 +7,7 @@
 
 @section('content')
     <h2>Категория {{ $category->name_ru }}/{{ $category->name_en }}</h2>
-    <a class="btn btn-success" href="{{ route('category.index') }}">К списку категорий</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('category.index') }}">К списку категорий</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название</th>

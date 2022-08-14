@@ -7,7 +7,7 @@
 
 @section('content')
     <h2>Значение свойства {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}</h2>
-    <a class="btn btn-success" href="{{ route('property_option.index') }}">К списку значений свойств</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('property_option.index') }}">К списку значений свойств</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название</th>

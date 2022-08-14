@@ -15,10 +15,10 @@
     </head>
     <body class="m-3">
         <div>
-            <a class="m-2" href="{{ route('skuListPage') }}">Главная</a>
-            <a class="m-2" href="{{ route('showBasket') }}">Корзина</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('skuListPage') }}">Главная</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('showBasket') }}">Корзина</a>
             @auth
-            <a class="m-2" href="{{ route('category.index') }}">Админка</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('category.index') }}">Админка</a>
             @endauth
             @guest
                 <a href="{{ route('register') }}">Регистрация</a>
@@ -26,7 +26,7 @@
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                     @csrf
-                    <button type="submit" title="Выйти">X</button>
+                    <button type="submit" title="Выйти" class="m-2 btn btn-secondary">X</button>
                 </form>
             @endauth
         </div>

@@ -7,7 +7,7 @@
 
 @section('content')
     <h2>СКУ {{ $sku->id }}</h2>
-    <a class="btn btn-success" href="{{ route('sku.index') }}">К списку СКУ</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('sku.index') }}">К списку СКУ</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название</th>

@@ -15,23 +15,23 @@
     </head>
     <body class="m-3">
         <div>
-            <a class="m-2" href="{{ route('skuListPage') }}">Главная</a>
-            <a class="m-2" href="{{ route('currency.index') }}">Список валют</a>
-            <a class="m-2" href="{{ route('category.index') }}">Список категорий</a>
-            <a class="m-2" href="{{ route('product.index') }}">Список продуктов</a>
-            <a class="m-2" href="{{ route('sku.index') }}">СКУ</a>
-            <a class="m-2" href="{{ route('property.index') }}">Список свойств</a>
-            <a class="m-2" href="{{ route('property_option.index') }}">Список значений свойств</a>
-            <a class="m-2" href="{{ route('role.index') }}">Список ролей пользователей</a>
-            <a class="m-2" href="{{ route('user.index') }}">Список пользователей</a>
-            <a class="m-2" href="{{ route('order.index') }}">Список заказов</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('skuListPage') }}">Главная</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('currency.index') }}">Список валют</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('category.index') }}">Список категорий</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('product.index') }}">Список продуктов</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('sku.index') }}">СКУ</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('property.index') }}">Список свойств</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('property_option.index') }}">Список значений свойств</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('role.index') }}">Список ролей пользователей</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('user.index') }}">Список пользователей</a>
+            <a class="m-2 btn btn-secondary" href="{{ route('order.index') }}">Список заказов</a>
             @guest
                 <a href="{{ route('register') }}">Регистрация</a>
             @endguest
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                     @csrf
-                    <button type="submit" title="Выйти">X</button>
+                    <button type="submit" title="Выйти" class="m-2 btn btn-secondary">X</button>
                 </form>
             @endauth
         </div>

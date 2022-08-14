@@ -18,13 +18,13 @@
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
-    <h2>Каталог товаров</h2>
+    <h2 class="text-center">Каталог товаров</h2>
     <div class="container">
         <div class="row">
             @foreach ($skus as $sku)
                 <div class="col-3 mb-5 mt-3">
                     <a href="{{ route('skuPage', $sku->id) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 200px;"></a>
-                    <a href="{{ route('skuPage', $sku->id) }}"><h4>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</h4></a>
+                    <h4><a href="{{ route('skuPage', $sku->id) }}" class="mt-2 btn btn-dark">{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</a></h4>
                     <p>{{ $sku->price }} {{ $sku->currency->code }}</p>
                     @if ($sku->count > 0)
                         <form action="{{ route('addToBasket', $sku) }}" method="POST">

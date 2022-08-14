@@ -22,7 +22,7 @@
         </div>
     @endif
     <h2>Роли</h2>
-    <a class="btn btn-success" href="{{ route('role.create') }}">Добавить роль</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('role.create') }}">Добавить роль</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название RU</th>

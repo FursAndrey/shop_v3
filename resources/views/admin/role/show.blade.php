@@ -7,7 +7,7 @@
 
 @section('content')
     <h2>Роль {{ $role->name_ru }}/{{ $role->name_en }}</h2>
-    <a class="btn btn-success" href="{{ route('role.index') }}">К списку продуктов</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('role.index') }}">К списку продуктов</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название</th>
