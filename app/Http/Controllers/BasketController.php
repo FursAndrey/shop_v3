@@ -23,16 +23,24 @@ class BasketController extends Controller
         $basket = session('basket');
         if (isset($basket[$sku->id])) {
             //если существует - увеличить кол-во
-            $basket[$sku->id]->countInBasket++;
+            if ($sku->countInBasket < $sku->count) {
+                $basket[$sku->id]->countInBasket++;
+                $txt = 'СКУ '.$sku->id.' добавлено в корзину';
+                $messageType = 'success';
+            } else {
+                $txt = 'СКУ '.$sku->id.' не доступен для заказа в большем объеме';
+                $messageType = 'danger';
+            }
         } else {
             //иначе - создать
             $sku->countInBasket = 1;
             $basket[$sku->id] = $sku;
+            $txt = 'СКУ '.$sku->id.' добавлено в корзину';
+            $messageType = 'success';
         }
         session(['basket' => $basket]);
         
-        $txt = 'СКУ '.$sku->id.' добавлено в корзину';
-        return redirect()->route('showBasket')->with('success', $txt);
+        return redirect()->route('showBasket')->with($messageType, $txt);
     }
 
     public function removeFromBasket(Sku $sku)
