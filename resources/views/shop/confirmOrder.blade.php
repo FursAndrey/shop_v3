@@ -5,7 +5,7 @@
 @section('content')
     <h2 class="text-center">Подтверждение заказа</h2>
     <div class="container">
-        <form action="#" method="post">
+        <form action="{{ route('confirmOrder') }}" method="post">
             <div class="mb-4">
                 @error('user_name')
                     <div class="error">{{ $message }}</div>
@@ -17,12 +17,12 @@
             </div>
             @guest
                 <div class="mb-4">
-                    @error('email')
+                    @error('user_email')
                         <div class="error">{{ $message }}</div>
                     @enderror
                     <div>
-                        <label for="email" class="form-label col-12">Email<span style="color:red">*</span></label>
-                        <input type="text" id="email" name="email" class="form-control col-12">
+                        <label for="user_email" class="form-label col-12">Email<span style="color:red">*</span></label>
+                        <input type="text" id="user_email" name="user_email" class="form-control col-12">
                     </div>
                 </div>
             @endguest

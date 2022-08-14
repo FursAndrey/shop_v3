@@ -54,5 +54,6 @@ Route::post('/basket/remove/{sku}', [BasketController::class, 'removeFromBasket'
 Route::delete('/basket/remuveThisSku/{sku}', [BasketController::class, 'remuveThisSkuFromBasket'])->name('remuveThisSkuFromBasket');
 Route::delete('/basket/clear', [BasketController::class, 'clearBasket'])->name('clearBasket');
 Route::get('/basket/confirm', [BasketController::class, 'confirmOrderForm'])->name('confirmOrderForm');
+Route::post('/basket/confirm', [BasketController::class, 'confirmOrder'])->name('confirmOrder');
 
 require __DIR__.'/auth.php';

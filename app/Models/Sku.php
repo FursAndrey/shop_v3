@@ -16,6 +16,13 @@ class Sku extends Model
         'currency_id',
     ];
 
+    protected $visible = [
+        'price', 
+        'count',
+        'product_id', 
+        'currency_id',
+    ];
+
     public function product()
     {
         return $this->belongsTo(Product::class);

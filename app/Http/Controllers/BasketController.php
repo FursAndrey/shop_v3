@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Sku;
 use Illuminate\Http\Request;
 
@@ -81,6 +82,46 @@ class BasketController extends Controller
         if (session('basket')) {
             $basket = session('basket');
             return view('shop.confirmOrder', compact('basket'));
+        } else {
+            $txt = 'Корзина пуста';
+            return redirect()->route('skuListPage')->with('danger', $txt);
+        }
+    }
+
+    public function confirmOrder(Request $request)
+    {
+        if (session('basket')) {
+            $basket = session('basket');
+
+            $totalPrice = 0;
+            $skus = [];
+            foreach ($basket as $skuInOrder) {
+                $priceInBasket = $skuInOrder->price*$skuInOrder->countInBasket;
+                $totalPrice += $priceInBasket;
+
+                $sku = Sku::find($skuInOrder->id);
+                if ($sku->count < $skuInOrder->countInBasket) {
+                    $txt = 'Заказ не доступен в полном объеме.';
+                    return redirect()->route('showBasket')->with('danger', $txt);
+                }
+                $sku->count -= $skuInOrder->countInBasket;
+                $skus[$skuInOrder->id] = $sku->toArray();
+            }
+
+            $confirm = $request->all();
+            $confirm['currency_code'] = 'BYN';
+            $confirm['total_price'] = $totalPrice;
+
+            $order = Order::create($confirm);
+            session()->forget('basket');
+
+            foreach ($skus as $skuId => $sku) {
+                $skuInDB = Sku::find($skuId);
+                $skuInDB->update($sku);
+            }
+
+            $txt = 'Заказ '.$order->id.' подтвержден.';
+            return redirect()->route('skuListPage')->with('success', $txt);
         } else {
             $txt = 'Корзина пуста';
             return redirect()->route('skuListPage')->with('danger', $txt);
