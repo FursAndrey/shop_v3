@@ -24,6 +24,7 @@
             <a class="m-2" href="{{ route('property_option.index') }}">Список значений свойств</a>
             <a class="m-2" href="{{ route('role.index') }}">Список ролей пользователей</a>
             <a class="m-2" href="{{ route('user.index') }}">Список пользователей</a>
+            <a class="m-2" href="{{ route('order.index') }}">Список заказов</a>
             @guest
                 <a href="{{ route('register') }}">Регистрация</a>
             @endguest

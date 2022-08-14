@@ -1,0 +1,62 @@
+@extends('../shop/main')
+
+@section('title') Заказы @endsection
+
+@section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success ">
+            <p class="text-center">{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('warning'))
+        <div class="alert alert-warning ">
+            <p class="text-center">{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('danger'))
+        <div class="alert alert-danger ">
+            <p class="text-center">{{ $message }}</p>
+        </div>
+    @endif
+    <h2>Заказы</h2>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Имя пользователя</th>
+            <th>Email</th>
+            <th>Коментарий</th>
+            <th>Сумма заказа</th>
+            <th>Статус</th>
+            <th></th>
+        </tr>
+        @foreach ($orders as $order)
+            <tr>
+                <td><a href="#" class="btn btn-info">{{ $order->id }}</a></td>
+                <td>{{ $order->user_name }}</td>
+                <td>{{ $order->user_email }}</td>
+                <td>{{ $order->description }}</td>
+                <td>{{ $order->total_price }} {{ $order->currency_code }}</td>
+                <td>
+                    @if ($order->status == 0)
+                        <span class="text-warning border border-warning p-1 rounded">Заказ принят</span>
+                    @elseif ($order->status == 1)
+                        <span class="text-success border border-success p-1 rounded">Заказ выдан</span>
+                    @else
+                        <span class="text-danger border border-danger p-1 rounded">Заказ отменен</span>
+                    @endif
+                </td>
+                <td>
+                    <form action="{{ route('order.success', $order) }}" method="POST" class="d-inline-block">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Отменить выдан</button>
+                    </form>
+                    <form action="{{ route('order.cencel', $order) }}" method="POST" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Отменить заказ</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+@endsection

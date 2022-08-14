@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CurrencyController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyOptionController;
@@ -43,6 +44,9 @@ Route::prefix('admin')->middleware('userIsAdmin')->group(function () {
     Route::get('user/show/{user}', [UserController::class, 'show'])->name('user.show');
     Route::get('role/create_for_user/{user}', [RoleController::class, 'create_for_user'])->name('role.create_for_user');
     Route::post('role/add_role/{user}', [RoleController::class, 'add_role'])->name('role.add_role');
+    Route::get('orders', [OrderController::class, 'index'])->name('order.index');
+    Route::delete('orders/{order}', [OrderController::class, 'cencel'])->name('order.cencel');
+    Route::post('orders/{order}', [OrderController::class, 'success'])->name('order.success');
 });
 
 Route::get('/', [PageController::class, 'skuList'])->name('skuListPage');
