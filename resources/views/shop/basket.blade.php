@@ -93,6 +93,7 @@
         @endforeach
     </table>
     <p><b>Общая сумма заказа</b> {{ $totalPrice }}{{ $sku->currency->code }}</p>
+    <a href="{{ route('confirmOrderForm') }}" class="btn btn-success">Оформить заказ</a>
     <form action="{{ route('clearBasket') }}" method="POST" class="d-inline-block">
         @csrf
         @method('DELETE')
@@ -100,5 +101,4 @@
             Убрать все из корзины
         </button>
     </form>
-    <a href="№" class="btn btn-success">Оформить заказ</a>
 @endsection

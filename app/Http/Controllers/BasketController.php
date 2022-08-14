@@ -75,4 +75,15 @@ class BasketController extends Controller
         $txt = 'Корзина очищена';
         return redirect()->route('skuListPage')->with('danger', $txt);
     }
+
+    public function confirmOrderForm()
+    {
+        if (session('basket')) {
+            $basket = session('basket');
+            return view('shop.confirmOrder', compact('basket'));
+        } else {
+            $txt = 'Корзина пуста';
+            return redirect()->route('skuListPage')->with('danger', $txt);
+        }
+    }
 }

@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('skuListPage');
+    // return view('dashboard');
 })->middleware(['userIsAdmin'])->name('dashboard');
 
 Route::prefix('admin')->middleware('userIsAdmin')->group(function () {
@@ -52,5 +53,6 @@ Route::post('/basket/add/{sku}', [BasketController::class, 'addToBasket'])->name
 Route::post('/basket/remove/{sku}', [BasketController::class, 'removeFromBasket'])->name('removeFromBasket');
 Route::delete('/basket/remuveThisSku/{sku}', [BasketController::class, 'remuveThisSkuFromBasket'])->name('remuveThisSkuFromBasket');
 Route::delete('/basket/clear', [BasketController::class, 'clearBasket'])->name('clearBasket');
+Route::get('/basket/confirm', [BasketController::class, 'confirmOrderForm'])->name('confirmOrderForm');
 
 require __DIR__.'/auth.php';
