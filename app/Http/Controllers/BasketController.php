@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use App\Models\Sku;
 use Illuminate\Http\Request;
@@ -88,13 +89,14 @@ class BasketController extends Controller
         }
     }
 
-    public function confirmOrder(Request $request)
+    public function confirmOrder(OrderRequest $request)
     {
         if (session('basket')) {
             $basket = session('basket');
 
             $totalPrice = 0;
             $skus = [];
+            //считаем общую сумму и проверяем доступность каждого товара в заказе
             foreach ($basket as $skuInOrder) {
                 $priceInBasket = $skuInOrder->price*$skuInOrder->countInBasket;
                 $totalPrice += $priceInBasket;
@@ -115,6 +117,7 @@ class BasketController extends Controller
             $order = Order::create($confirm);
             session()->forget('basket');
 
+            //обновляем количество товаров в БД
             foreach ($skus as $skuId => $sku) {
                 $skuInDB = Sku::find($skuId);
                 $skuInDB->update($sku);

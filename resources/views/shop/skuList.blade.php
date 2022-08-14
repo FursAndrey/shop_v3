@@ -4,17 +4,17 @@
 
 @section('content')
     @if ($message = Session::get('success'))
-        <div class="alert alert-success ">
+        <div class="alert alert-success">
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
     @if ($message = Session::get('warning'))
-        <div class="alert alert-warning ">
+        <div class="alert alert-warning">
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
     @if ($message = Session::get('danger'))
-        <div class="alert alert-danger ">
+        <div class="alert alert-danger">
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
