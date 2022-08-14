@@ -71,7 +71,7 @@ class BasketController extends Controller
 
     public function clearBasket()
     {
-        session()->flush();
+        session()->forget('basket');
         $txt = 'Корзина очищена';
         return redirect()->route('skuListPage')->with('danger', $txt);
     }
