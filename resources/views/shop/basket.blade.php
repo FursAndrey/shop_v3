@@ -47,12 +47,16 @@
                 <td>{{ $sku->price }} {{ $sku->currency->code }}</td>
                 <td>{{ $priceInBasket }} {{ $sku->currency->code }}</td>
                 <td>
-                    <form action="{{ route('addToBasket', $sku) }}" method="POST" class="d-inline-block">
-                        @csrf
-                        <button type="submit" class="btn btn-success" title="Добавить в корзину">
-                            +
-                        </button>
-                    </form>
+                    @if ($sku->countInBasket < $sku->count)
+                        <form action="{{ route('addToBasket', $sku) }}" method="POST" class="d-inline-block">
+                            @csrf
+                            <button type="submit" class="btn btn-success" title="Добавить в корзину">
+                                +
+                            </button>
+                        </form>
+                    @else
+                        <span class="d-inline-block btn btn-secondary" title="Товар не доступен для заказа в большем объеме">+</span>
+                    @endif
                     <span class="ms-3 me-3">{{ $sku->countInBasket }}</span>
                     <form action="{{ route('removeFromBasket', $sku) }}" method="POST" class="d-inline-block">
                         @csrf

@@ -24,14 +24,18 @@
             @foreach ($skus as $sku)
                 <div class="col-3 mb-5 mt-3">
                     <a href="{{ route('skuPage', $sku->id) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 200px;"></a>
-                    <h4>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</h4>
+                    <a href="{{ route('skuPage', $sku->id) }}"><h4>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</h4></a>
                     <p>{{ $sku->price }} {{ $sku->currency->code }}</p>
-                    <form action="{{ route('addToBasket', $sku) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-success" title="Добавить в корзину">
-                            Добавить в корзину
-                        </button>
-                    </form>
+                    @if ($sku->count > 0)
+                        <form action="{{ route('addToBasket', $sku) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-success" title="Добавить в корзину">
+                                Добавить в корзину
+                            </button>
+                        </form>
+                    @else
+                        <p class="text-danger">Не доступен для заказа</p>
+                    @endif
                 </div>
             @endforeach
         </div>

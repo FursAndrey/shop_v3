@@ -14,12 +14,16 @@
                 <p>SKU: {{ $sku->id }}</p>
                 <p>{{ $sku->product->description_ru }}/{{ $sku->product->description_en }}</p>
                 <p>{{ $sku->price }} {{ $sku->currency->code }}</p>
-                <form action="{{ route('addToBasket', $sku) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-success" title="Добавить в корзину">
-                        Добавить в корзину
-                    </button>
-                </form>
+                @if ($sku->count > 0)
+                    <form action="{{ route('addToBasket', $sku) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-success" title="Добавить в корзину">
+                            Добавить в корзину
+                        </button>
+                    </form>
+                @else
+                    <p class="text-danger">Не доступен для заказа</p>
+                @endif
             </div>
         </div>
         <p class="mt-5">Характеристики:</p>
