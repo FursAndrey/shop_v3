@@ -14,7 +14,12 @@
                 <p>SKU: {{ $sku->id }}</p>
                 <p>{{ $sku->product->description_ru }}/{{ $sku->product->description_en }}</p>
                 <p>{{ $sku->price }} {{ $sku->currency->code }}</p>
-                <a class="btn btn-success" href="#">Добавить в корзину</a>
+                <form action="{{ route('addToBasket', $sku) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-success" title="Добавить в корзину">
+                        Добавить в корзину
+                    </button>
+                </form>
             </div>
         </div>
         <p class="mt-5">Характеристики:</p>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PropertyOptionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SkuController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,5 +46,11 @@ Route::prefix('admin')->middleware('userIsAdmin')->group(function () {
 
 Route::get('/', [PageController::class, 'skuList'])->name('skuListPage');
 Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage');
+
+Route::get('/basket', [BasketController::class, 'showBasket'])->name('showBasket');
+Route::post('/basket/add/{sku}', [BasketController::class, 'addToBasket'])->name('addToBasket');
+Route::post('/basket/remove/{sku}', [BasketController::class, 'removeFromBasket'])->name('removeFromBasket');
+Route::post('/basket/remuveThisSku/{sku}', [BasketController::class, 'remuveThisSkuFromBasket'])->name('remuveThisSkuFromBasket');
+Route::post('/basket/clear', [BasketController::class, 'clearBasket'])->name('clearBasket');
 
 require __DIR__.'/auth.php';

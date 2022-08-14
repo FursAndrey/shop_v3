@@ -16,6 +16,7 @@
     <body class="m-3">
         <div>
             <a class="m-2" href="{{ route('skuListPage') }}">Главная</a>
+            <a class="m-2" href="{{ route('showBasket') }}">Корзина</a>
             @auth
             <a class="m-2" href="{{ route('category.index') }}">Админка</a>
             @endauth

@@ -26,7 +26,12 @@
                     <a href="{{ route('skuPage', $sku->id) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 200px;"></a>
                     <h4>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</h4>
                     <p>{{ $sku->price }} {{ $sku->currency->code }}</p>
-                    <a class="btn btn-success" href="#">Добавить в корзину</a>
+                    <form action="{{ route('addToBasket', $sku) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-success" title="Добавить в корзину">
+                            Добавить в корзину
+                        </button>
+                    </form>
                 </div>
             @endforeach
         </div>
