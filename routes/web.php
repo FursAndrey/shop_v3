@@ -50,7 +50,7 @@ Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage')
 Route::get('/basket', [BasketController::class, 'showBasket'])->name('showBasket');
 Route::post('/basket/add/{sku}', [BasketController::class, 'addToBasket'])->name('addToBasket');
 Route::post('/basket/remove/{sku}', [BasketController::class, 'removeFromBasket'])->name('removeFromBasket');
-Route::post('/basket/remuveThisSku/{sku}', [BasketController::class, 'remuveThisSkuFromBasket'])->name('remuveThisSkuFromBasket');
-Route::post('/basket/clear', [BasketController::class, 'clearBasket'])->name('clearBasket');
+Route::delete('/basket/remuveThisSku/{sku}', [BasketController::class, 'remuveThisSkuFromBasket'])->name('remuveThisSkuFromBasket');
+Route::delete('/basket/clear', [BasketController::class, 'clearBasket'])->name('clearBasket');
 
 require __DIR__.'/auth.php';

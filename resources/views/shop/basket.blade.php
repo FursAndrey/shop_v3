@@ -79,6 +79,7 @@
                 <td>
                     <form action="{{ route('remuveThisSkuFromBasket', $sku) }}" method="POST">
                         @csrf
+                        @method('DELETE')
                         <button type="submit" class="btn btn-danger" title="Убрать из корзины">
                             Х
                         </button>
@@ -90,6 +91,7 @@
     <p><b>Общая сумма заказа</b> {{ $totalPrice }}{{ $sku->currency->code }}</p>
     <form action="{{ route('clearBasket') }}" method="POST" class="d-inline-block">
         @csrf
+        @method('DELETE')
         <button type="submit" class="btn btn-danger" title="Убрать все из корзины">
             Убрать все из корзины
         </button>
