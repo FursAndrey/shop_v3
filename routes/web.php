@@ -45,6 +45,7 @@ Route::prefix('admin')->middleware('userIsAdmin')->group(function () {
     Route::get('role/create_for_user/{user}', [RoleController::class, 'create_for_user'])->name('role.create_for_user');
     Route::post('role/add_role/{user}', [RoleController::class, 'add_role'])->name('role.add_role');
     Route::get('orders', [OrderController::class, 'index'])->name('order.index');
+    Route::get('orders/show/{order}', [OrderController::class, 'show'])->name('order.show');
     Route::delete('orders/{order}', [OrderController::class, 'cencel'])->name('order.cencel');
     Route::post('orders/{order}', [OrderController::class, 'success'])->name('order.success');
 });

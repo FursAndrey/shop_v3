@@ -21,7 +21,7 @@
             <a class="m-2 btn btn-secondary" href="{{ route('category.index') }}">Админка</a>
             @endauth
             @guest
-                <a href="{{ route('register') }}">Регистрация</a>
+                <a href="{{ route('register') }}" class="m-2 btn btn-secondary">Регистрация</a>
             @endguest
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">

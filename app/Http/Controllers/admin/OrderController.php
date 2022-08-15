@@ -27,7 +27,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        dd($order);
+        return view('admin.order.show', compact('order'));
     }
 
     public function cencel(Order $order)

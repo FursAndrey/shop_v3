@@ -17,4 +17,9 @@ class Order extends Model
         'currency_code',
         'status',
     ];
+    
+    public function orderedProducts()
+    {
+        return $this->hasMany(OrderedProduct::class);
+    }
 }

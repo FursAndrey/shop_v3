@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
+use App\Models\OrderedProduct;
 use App\Models\Sku;
 use Illuminate\Http\Request;
 
@@ -115,6 +116,17 @@ class BasketController extends Controller
             $confirm['total_price'] = $totalPrice;
 
             $order = Order::create($confirm);
+
+            //сохраняем инф. о заказанных продуктах
+            $orderedProduct['order_id'] = $order->id;
+            foreach ($basket as $skuInOrder) {
+                $orderedProduct['sku_id'] = $skuInOrder->id;
+                $orderedProduct['name_ru'] = $skuInOrder->product->name_ru;
+                $orderedProduct['name_en'] = $skuInOrder->product->name_en;
+                $orderedProduct['count'] = $skuInOrder->countInBasket;
+                $orderedProduct['price_for_once'] = $skuInOrder->price;
+                OrderedProduct::create($orderedProduct);
+            }
             session()->forget('basket');
 
             //обновляем количество товаров в БД

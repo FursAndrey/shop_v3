@@ -1,4 +1,4 @@
-@extends('../shop/main')
+@extends('../admin/main')
 
 @section('title') Заказы @endsection
 
@@ -31,7 +31,7 @@
         </tr>
         @foreach ($orders as $order)
             <tr>
-                <td><a href="#" class="btn btn-info">{{ $order->id }}</a></td>
+                <td><a href="{{ route('order.show', $order) }}" class="btn btn-info">{{ $order->id }}</a></td>
                 <td>{{ $order->user_name }}</td>
                 <td>{{ $order->user_email }}</td>
                 <td>{{ $order->description }}</td>

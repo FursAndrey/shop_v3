@@ -24,7 +24,7 @@
             @foreach ($skus as $sku)
                 <div class="col-3 mb-5 mt-3">
                     <a href="{{ route('skuPage', $sku->id) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 200px;"></a>
-                    <h4><a href="{{ route('skuPage', $sku->id) }}" class="mt-2 btn btn-dark">{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</a></h4>
+                    <h4><a href="{{ route('skuPage', $sku->id) }}" class="mt-2 btn btn-info">{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</a></h4>
                     <p>{{ $sku->price }} {{ $sku->currency->code }}</p>
                     @if ($sku->count > 0)
                         <form action="{{ route('addToBasket', $sku) }}" method="POST">
