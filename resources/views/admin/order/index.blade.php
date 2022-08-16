@@ -48,7 +48,7 @@
                 <td>
                     <form action="{{ route('order.success', $order) }}" method="POST" class="d-inline-block">
                         @csrf
-                        <button type="submit" class="btn btn-success">Отменить выдан</button>
+                        <button type="submit" class="btn btn-success">Заказ выдан</button>
                     </form>
                     <form action="{{ route('order.cencel', $order) }}" method="POST" class="d-inline-block">
                         @csrf
