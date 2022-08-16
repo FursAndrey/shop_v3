@@ -22,4 +22,9 @@ class OrderedProduct extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    public function ordered_properties()
+    {
+        return $this->hasMany(OrderedProperty::class);
+    }
 }

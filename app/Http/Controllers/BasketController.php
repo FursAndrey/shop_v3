@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use App\Models\OrderedProduct;
+use App\Models\OrderedProperty;
 use App\Models\Sku;
 use Illuminate\Http\Request;
 
@@ -125,7 +126,31 @@ class BasketController extends Controller
                 $orderedProduct['name_en'] = $skuInOrder->product->name_en;
                 $orderedProduct['count'] = $skuInOrder->countInBasket;
                 $orderedProduct['price_for_once'] = $skuInOrder->price;
-                OrderedProduct::create($orderedProduct);
+                $orderProduct = OrderedProduct::create($orderedProduct);
+                
+                //сохраняем инф. о свойствах заказанных продуктов
+                $orderedProperty['ordered_product_id'] = $orderProduct->id;
+                foreach ($sku->product->properties as $property) {
+                    $orderedProperty['property_name_ru'] = $property->name_ru;
+                    $orderedProperty['property_name_en'] = $property->name_en;
+                    if (isset($sku->property_options)) {
+                        //хз как правильно
+                        if ($sku->property_options[0]->property->id == $property->id) {
+                            $orderedProperty['option_name_ru'] = $sku->property_options[0]->name_ru;
+                            $orderedProperty['option_name_en'] = $sku->property_options[0]->name_en;
+                        }
+                        // foreach ($sku->property_options as $propertyOption) {
+                        //     if ($propertyOption->property->id == $property->id) {
+                        //         $orderedProperty['option_name_ru'] = $propertyOption->name_ru;
+                        //         $orderedProperty['option_name_en'] = $propertyOption->name_en;
+                        //     }
+                        // }
+                    } else {
+                        $orderedProperty['option_name_ru'] = '-';
+                        $orderedProperty['option_name_en'] = '-';
+                    }
+                    OrderedProperty::create($orderedProperty);
+                }
             }
             session()->forget('basket');
 
