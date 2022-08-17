@@ -26,7 +26,7 @@
             <a @route_active('user.index') href="{{ route('user.index') }}">Список пользователей</a>
             <a @route_active('order.index') href="{{ route('order.index') }}">Список заказов</a>
             @guest
-                <a href="{{ route('register') }}" @route_active('register')>Регистрация</a>
+                <a href="{{ route('login') }}" @route_active('login')>Войти</a>
             @endguest
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">

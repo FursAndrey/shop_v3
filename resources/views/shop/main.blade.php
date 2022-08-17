@@ -21,7 +21,7 @@
             <a @route_active('category.index') href="{{ route('category.index') }}">Админка</a>
             @endauth
             @guest
-                <a href="{{ route('register') }}" @route_active('register')>Регистрация</a>
+                <a href="{{ route('login') }}" @route_active('login')>Войти</a>
             @endguest
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
