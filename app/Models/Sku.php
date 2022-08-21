@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\MyServices\CurrencyConversion;
 
 class Sku extends Model
 {
@@ -36,5 +37,15 @@ class Sku extends Model
     public function property_options()
     {
         return $this->belongsToMany(PropertyOption::class)->withTimestamps();
+    }
+    
+    public function getPriceAttribute($value)
+    {
+        return CurrencyConversion::convert($value);
+    }
+    
+    public function getCurCodeAttribute()
+    {
+        return CurrencyConversion::getCurCode();
     }
 }

@@ -60,6 +60,7 @@ Route::delete('/basket/remuveThisSku/{sku}', [BasketController::class, 'remuveTh
 Route::delete('/basket/clear', [BasketController::class, 'clearBasket'])->name('clearBasket');
 Route::get('/basket/confirm', [BasketController::class, 'confirmOrderForm'])->name('confirmOrderForm');
 Route::post('/basket/confirm', [BasketController::class, 'confirmOrder'])->name('confirmOrder');
+Route::get('/setCur/{currencyCode}', [PageController::class, 'setCurrency'])->name('setCurrency');
 
 Route::get('/basket/checkShow/{order}', [BasketController::class, 'checkShow'])->name('checkShow');
 Route::get('/basket/checkLoad/{order}', [BasketController::class, 'checkLoad'])->name('checkLoad');

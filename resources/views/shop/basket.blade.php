@@ -44,8 +44,8 @@
                     <p><a href="{{ route('sku.show', $sku) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 100px;"></a></p>
                     <p><a href="{{ route('sku.show', $sku) }}" class="btn btn-info">{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</a></p>
                 </td>
-                <td>{{ $sku->price }} {{ $sku->currency->code }}</td>
-                <td>{{ $priceInBasket }} {{ $sku->currency->code }}</td>
+                <td>{{ $sku->price }} {{ $sku->cur_code }}</td>
+                <td>{{ $priceInBasket }} {{ $sku->cur_code }}</td>
                 <td>
                     @if ($sku->countInBasket < $sku->count)
                         <form action="{{ route('addToBasket', $sku) }}" method="POST" class="d-inline-block">
@@ -92,7 +92,7 @@
             </tr>
         @endforeach
     </table>
-    <p><b>Общая сумма заказа</b> {{ $totalPrice }}{{ $sku->currency->code }}</p>
+    <p><b>Общая сумма заказа</b> {{ $totalPrice }}{{ $sku->cur_code }}</p>
     <a href="{{ route('confirmOrderForm') }}" class="btn btn-success">Оформить заказ</a>
     <form action="{{ route('clearBasket') }}" method="POST" class="d-inline-block">
         @csrf

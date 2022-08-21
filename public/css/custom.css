@@ -1,0 +1,20 @@
+.head-menu {
+    display: inline-block;
+    position: relative; 
+}
+
+.head-menu > ul {
+    z-index: 1;
+    list-style-type: none; 
+    position: absolute; 
+    margin: 0; 
+    padding: 0; 
+    top: 46px; 
+    left: 0; 
+    display: none; 
+    background: #c2cbd3;
+}
+
+.head-menu:hover > ul {
+    display: inline-block;
+}

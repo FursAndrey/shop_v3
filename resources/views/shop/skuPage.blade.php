@@ -13,7 +13,7 @@
                 <h4>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</h4>
                 <p>SKU: {{ $sku->id }}</p>
                 <p>{{ $sku->product->description_ru }}/{{ $sku->product->description_en }}</p>
-                <p>{{ $sku->price }} {{ $sku->currency->code }}</p>
+                <p>{{ $sku->price }} {{ $sku->cur_code }}</p>
                 @if ($sku->count > 0)
                     <form action="{{ route('addToBasket', $sku) }}" method="POST">
                         @csrf

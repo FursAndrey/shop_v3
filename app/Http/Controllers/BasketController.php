@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderedProduct;
 use App\Models\OrderedProperty;
 use App\Models\Sku;
+use App\MyServices\CurrencyConversion;
 
 use \Mpdf\Mpdf as PDF; 
 use Illuminate\Support\Facades\Storage;
@@ -17,12 +18,13 @@ class BasketController extends Controller
 {
     public function showBasket()
     {
+        $currencies = CurrencyConversion::getCurrencies();
         if (session('basket')) {
             $basket = session('basket');
-            return view('shop.basket', compact('basket'));
+            return view('shop.basket', compact('basket', 'currencies'));
         } else {
             $txt = 'Корзина пуста';
-            return redirect()->route('skuListPage')->with('danger', $txt);
+            return redirect()->route('skuListPage', compact('currencies'))->with('danger', $txt);
         }
     }
 
@@ -79,19 +81,21 @@ class BasketController extends Controller
 
     public function clearBasket()
     {
+        $currencies = CurrencyConversion::getCurrencies();
         session()->forget('basket');
         $txt = 'Корзина очищена';
-        return redirect()->route('skuListPage')->with('danger', $txt);
+        return redirect()->route('skuListPage', compact('currencies'))->with('danger', $txt);
     }
 
     public function confirmOrderForm()
     {
+        $currencies = CurrencyConversion::getCurrencies();
         if (session('basket')) {
             $basket = session('basket');
-            return view('shop.confirmOrder', compact('basket'));
+            return view('shop.confirmOrder', compact('basket', 'currencies'));
         } else {
             $txt = 'Корзина пуста';
-            return redirect()->route('skuListPage')->with('danger', $txt);
+            return redirect()->route('skuListPage', compact('currencies'))->with('danger', $txt);
         }
     }
 
@@ -112,12 +116,14 @@ class BasketController extends Controller
                     $txt = 'Заказ не доступен в полном объеме.';
                     return redirect()->route('showBasket')->with('danger', $txt);
                 }
+                //цена не должна обновляться
+                unset($sku->price);
                 $sku->count -= $skuInOrder->countInBasket;
                 $skus[$skuInOrder->id] = $sku->toArray();
             }
 
             $confirm = $request->all();
-            $confirm['currency_code'] = 'BYN';
+            $confirm['currency_code'] = CurrencyConversion::getCurCode();
             $confirm['total_price'] = $totalPrice;
 
             $order = Order::create($confirm);
@@ -168,8 +174,9 @@ class BasketController extends Controller
             // $txt = 'Заказ '.$order->id.' подтвержден.';
             // return redirect()->route('skuListPage')->with('success', $txt);
         } else {
+            $currencies = CurrencyConversion::getCurrencies();
             $txt = 'Корзина пуста';
-            return redirect()->route('skuListPage')->with('danger', $txt);
+            return redirect()->route('skuListPage', compact('currencies'))->with('danger', $txt);
         }
     }
 
@@ -186,10 +193,9 @@ class BasketController extends Controller
 
     public function checkLoad(Order $order)
     {
-        // Setup a filename 
         $documentFileName = "check.pdf";
  
-        // Create the mPDF document
+        //конфигурация MPDF
         $document = new PDF( [
             'mode' => 'utf-8',
             'format' => 'A4',
@@ -199,13 +205,13 @@ class BasketController extends Controller
             'margin_footer' => '2',
         ]);     
  
-        // Set some header informations for output
+        //заголовки для вывода
         $header = [
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="'.$documentFileName.'"'
         ];
  
-        // Write some simple Content
+        //подготовка контента
         $document->WriteHTML( 
             view(
                 'shop.check', 
@@ -216,10 +222,9 @@ class BasketController extends Controller
             )
         );
          
-        // Save PDF on your public storage 
+        //сохранение в файл
         Storage::disk('public')->put($documentFileName, $document->Output($documentFileName, "S"));
-         
-        // Get file back from storage with the give header informations
+        
         return Storage::disk('public')->download($documentFileName, 'Request', $header);
         // return Storage::disk('public')->download($documentFileName);
     }
