@@ -12,7 +12,6 @@
         <style>
             body {
                 font-family: 'Arial' !important;
-                background: #f3eeff;
             }
 
             td {
@@ -41,7 +40,7 @@
         @endif
         
         <h2>Заказ {{ $order->id }}</h2>
-        <table class="table table-striped table-hover">
+        <table @if (!$isPDF) class="table table-striped table-hover"@endif>
             <tr>
                 <td colspan="2">ID заказа</td>
                 <td colspan="3">{{ $order->id }}</td>
