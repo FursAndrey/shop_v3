@@ -61,4 +61,7 @@ Route::delete('/basket/clear', [BasketController::class, 'clearBasket'])->name('
 Route::get('/basket/confirm', [BasketController::class, 'confirmOrderForm'])->name('confirmOrderForm');
 Route::post('/basket/confirm', [BasketController::class, 'confirmOrder'])->name('confirmOrder');
 
+Route::get('/basket/checkShow/{order}', [BasketController::class, 'checkShow'])->name('checkShow');
+Route::get('/basket/checkLoad/{order}', [BasketController::class, 'checkLoad'])->name('checkLoad');
+
 require __DIR__.'/auth.php';

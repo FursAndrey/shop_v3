@@ -7,6 +7,10 @@ use App\Models\Order;
 use App\Models\OrderedProduct;
 use App\Models\OrderedProperty;
 use App\Models\Sku;
+
+use \Mpdf\Mpdf as PDF; 
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
@@ -160,11 +164,63 @@ class BasketController extends Controller
                 $skuInDB->update($sku);
             }
 
-            $txt = 'Заказ '.$order->id.' подтвержден.';
-            return redirect()->route('skuListPage')->with('success', $txt);
+            return redirect()->route('checkShow', $order);
+            // $txt = 'Заказ '.$order->id.' подтвержден.';
+            // return redirect()->route('skuListPage')->with('success', $txt);
         } else {
             $txt = 'Корзина пуста';
             return redirect()->route('skuListPage')->with('danger', $txt);
         }
+    }
+
+    public function checkShow(Order $order)
+    {
+        return view(
+            'shop.check', 
+            [
+                'order' => $order,
+                'isPDF' => false,
+            ]
+        );
+    }
+
+    public function checkLoad(Order $order)
+    {
+        // Setup a filename 
+        $documentFileName = "check.pdf";
+ 
+        // Create the mPDF document
+        $document = new PDF( [
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_header' => '3',
+            'margin_top' => '20',
+            'margin_bottom' => '20',
+            'margin_footer' => '2',
+        ]);     
+ 
+        // Set some header informations for output
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$documentFileName.'"'
+        ];
+ 
+        // Write some simple Content
+        $document->WriteHTML( 
+            view(
+                'shop.check', 
+                [
+                    'order' => $order,
+                    'isPDF' => true,
+                ]
+            )
+        );
+         
+        // Save PDF on your public storage 
+        Storage::disk('public')->put($documentFileName, $document->Output($documentFileName, "S"));
+         
+        // Get file back from storage with the give header informations
+        return Storage::disk('public')->download($documentFileName, 'Request', $header);
+        // return Storage::disk('public')->download($documentFileName);
     }
 }
