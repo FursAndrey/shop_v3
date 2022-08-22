@@ -68,10 +68,10 @@
         @csrf
         
         @if (isset($sku))
-            <button type="submit" class="btn btn-primary">Редактировать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.update')</button>
         @else
-            <button type="submit" class="btn btn-primary">Создать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
         @endif
-        <a class="btn btn-success" href="{{ route('sku.index') }}">К списку СКУ</a>
+        <a class="btn btn-success" href="{{ route('sku.index') }}">@lang('btn.return_to_skus')</a>
     </form>
 @endsection

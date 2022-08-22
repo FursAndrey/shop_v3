@@ -38,7 +38,7 @@
                         {{ $role->name_ru }}/{{ $role->name_en }}<br/>
                     @endforeach
                 </td>
-                <td><a href="{{ route('role.create_for_user', $user) }}" class="btn btn-primary d-inline-block">Добавить роль</a></td>
+                <td><a href="{{ route('role.create_for_user', $user) }}" class="btn btn-primary d-inline-block">@lang('btn.add_role')</a></td>
             </tr>
         @endforeach
     </table>

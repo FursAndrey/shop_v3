@@ -22,7 +22,7 @@
         </div>
     @endif
     <h2>Значение свойства</h2>
-    <a class="btn btn-success mt-2 mb-2" href="{{ route('property_option.create') }}">Добавить значение свойства</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('property_option.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название RU</th>
@@ -34,11 +34,11 @@
                 <td><a href="{{ route('property_option.show', $option) }}" class="btn btn-info">{{ $option->name_ru }}</a></td>
                 <td><a href="{{ route('property_option.show', $option) }}" class="btn btn-info">{{ $option->name_en }}</a></td>
                 <td>
-                    <a href="{{ route('property_option.edit', $option) }}" class="btn btn-warning d-inline-block">Редактировать</a>
+                    <a href="{{ route('property_option.edit', $option) }}" class="btn btn-warning d-inline-block">@lang('btn.update')</a>
                     <form action="{{ route('property_option.destroy', $option) }}" method="POST" class="d-inline-block">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Удалить</button>
+                        <button type="submit" class="btn btn-danger">@lang('btn.delete')</button>
                     </form>
                 </td>
             </tr>

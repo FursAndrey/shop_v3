@@ -27,18 +27,13 @@
             <div class="mb-3">
                 <x-label for="password" :value="__('Password')" class="form-label" />
 
-                <x-input id="password" class="form-control"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                <x-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
             </div>
 
             <div class="mb-3">
-                <a class="btn btn-danger" href="{{ route('skuListPage') }}">Главная</a>
-                <a class="btn btn-primary ms-3 me-3" href="{{ route('register') }}">Регистрация</a>
-                <x-button class="btn btn-success">
-                    {{ __('Log in') }}
-                </x-button>
+                <a class="btn btn-danger" href="{{ route('skuListPage') }}">@lang('btn.home')</a>
+                <a class="btn btn-primary ms-3 me-3" href="{{ route('register') }}">@lang('btn.register')</a>
+                <x-button class="btn btn-success">@lang('btn.login')</x-button>
             </div>
         </form>
     </x-auth-card>

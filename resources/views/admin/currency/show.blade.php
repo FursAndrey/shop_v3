@@ -7,7 +7,7 @@
 
 @section('content')
     <h2>Валюта {{ $currency->code }}</h2>
-    <a class="btn btn-success mt-2 mb-2" href="{{ route('currency.index') }}">К списку валют</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('currency.index') }}">@lang('btn.return_to_currencies')</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название</th>

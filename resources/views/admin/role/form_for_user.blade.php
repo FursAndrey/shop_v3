@@ -21,7 +21,7 @@
         </div>
         @csrf
         
-        <button type="submit" class="btn btn-primary">Добавить роль</button>
-        <a class="btn btn-success" href="{{ route('user.index') }}">К списку пользователей</a>
+        <button type="submit" class="btn btn-primary">@lang('btn.add_role')</button>
+        <a class="btn btn-success" href="{{ route('user.index') }}">@lang('btn.return_to_users')</a>
     </form>
 @endsection

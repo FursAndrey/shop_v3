@@ -42,10 +42,10 @@
         @csrf
         
         @if (isset($propertyOption))
-            <button type="submit" class="btn btn-primary">Редактировать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.update')</button>
         @else
-            <button type="submit" class="btn btn-primary">Создать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
         @endif
-        <a class="btn btn-success" href="{{ route('property_option.index') }}">К списку значений свойств</a>
+        <a class="btn btn-success" href="{{ route('property_option.index') }}">@lang('btn.return_to_options')</a>
     </form>
 @endsection

@@ -29,12 +29,12 @@
                     @if ($sku->count > 0)
                         <form action="{{ route('addToBasket', $sku) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-success" title="Добавить в корзину">
-                                Добавить в корзину
+                            <button type="submit" class="btn btn-success" title="@lang('btn.add_to_basket')">
+                                @lang('btn.add_to_basket')
                             </button>
                         </form>
                     @else
-                        <p class="text-danger">Не доступен для заказа</p>
+                        <p class="btn btn-danger">@lang('btn.not_available_for_order')</p>
                     @endif
                 </div>
             @endforeach

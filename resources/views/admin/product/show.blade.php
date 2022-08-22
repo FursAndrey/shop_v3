@@ -7,7 +7,7 @@
 
 @section('content')
     <h2>Продукт {{ $product->name_ru }}/{{ $product->name_en }}</h2>
-    <a class="btn btn-success mt-2 mb-2" href="{{ route('product.index') }}">К списку продуктов</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('product.index') }}">@lang('btn.return_to_products')</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название</th>

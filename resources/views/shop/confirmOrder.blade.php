@@ -39,7 +39,9 @@
                 </div>
             </div>
             @csrf
-            <button type="submit" class="btn btn-success">Подтвердить заказ</button>
+            <button type="submit" class="btn btn-success">@lang('btn.confirm_order')</button>
+            <a class="btn btn-warning" href="{{ route('showBasket') }}">@lang('btn.basket')</a>
+            <a class="btn btn-warning" href="{{ route('skuListPage') }}">@lang('btn.home')</a>
         </form>
     </div>
 @endsection

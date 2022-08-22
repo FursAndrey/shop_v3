@@ -24,7 +24,7 @@
         </div>
         <input type="hidden" name="property_id" value="{{ $property->id }}">
         @csrf
-        <button type="submit" class="btn btn-primary">Создать</button>
-        <a class="btn btn-success" href="{{ route('property.index') }}">К списку свойств</a>
+        <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
+        <a class="btn btn-success" href="{{ route('property.index') }}">@lang('btn.return_to_options')</a>
     </form>
 @endsection

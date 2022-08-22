@@ -50,17 +50,17 @@
                     @if ($sku->countInBasket < $sku->count)
                         <form action="{{ route('addToBasket', $sku) }}" method="POST" class="d-inline-block">
                             @csrf
-                            <button type="submit" class="btn btn-success" title="Добавить в корзину">
+                            <button type="submit" class="btn btn-success" title="@lang('btn.add_to_basket')">
                                 +
                             </button>
                         </form>
                     @else
-                        <span class="d-inline-block btn btn-secondary" title="Товар не доступен для заказа в большем объеме">+</span>
+                        <span class="d-inline-block btn btn-secondary" title="@lang('btn.not_available')">+</span>
                     @endif
                     <span class="ms-3 me-3">{{ $sku->countInBasket }}</span>
                     <form action="{{ route('removeFromBasket', $sku) }}" method="POST" class="d-inline-block">
                         @csrf
-                        <button type="submit" class="btn btn-warning" title="Уменьшить кол-во в корзине">
+                        <button type="submit" class="btn btn-warning" title="@lang('btn.remove_from_basket')">
                             -
                         </button>
                     </form>
@@ -84,7 +84,7 @@
                     <form action="{{ route('remuveThisSkuFromBasket', $sku) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" title="Убрать из корзины">
+                        <button type="submit" class="btn btn-danger" title="@lang('btn.remove_from_basket')">
                             Х
                         </button>
                     </form>
@@ -93,12 +93,12 @@
         @endforeach
     </table>
     <p><b>Общая сумма заказа</b> {{ $totalPrice }}{{ $sku->cur_code }}</p>
-    <a href="{{ route('confirmOrderForm') }}" class="btn btn-success">Оформить заказ</a>
+    <a href="{{ route('confirmOrderForm') }}" class="btn btn-success">@lang('btn.create_order')</a>
     <form action="{{ route('clearBasket') }}" method="POST" class="d-inline-block">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger" title="Убрать все из корзины">
-            Убрать все из корзины
+        <button type="submit" class="btn btn-danger" title="@lang('btn.clear_basket')">
+            @lang('btn.clear_basket')
         </button>
     </form>
 @endsection

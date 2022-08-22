@@ -16,18 +16,18 @@
     </head>
     <body class="m-3">
         <div>
-            <a @route_active('skuListPage') href="{{ route('skuListPage') }}">Главная</a>
-            <a @route_active('showBasket') href="{{ route('showBasket') }}">Корзина</a>
+            <a @route_active('skuListPage') href="{{ route('skuListPage') }}">@lang('btn.home')</a>
+            <a @route_active('showBasket') href="{{ route('showBasket') }}">@lang('btn.basket')</a>
             @auth
-            <a @route_active('category.index') href="{{ route('category.index') }}">Админка</a>
+            <a @route_active('category.index') href="{{ route('category.index') }}">@lang('btn.admin_panel')</a>
             @endauth
             @guest
-                <a href="{{ route('login') }}" @route_active('login')>Войти</a>
+                <a href="{{ route('login') }}" @route_active('login')>@lang('btn.login')</a>
             @endguest
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                     @csrf
-                    <button type="submit" title="Выйти" @route_active('logout')>X</button>
+                    <button type="submit" title="Выйти" @route_active('logout')>@lang('btn.logout')</button>
                 </form>
             @endauth
             <div class="head-menu">

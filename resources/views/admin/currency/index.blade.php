@@ -22,7 +22,7 @@
         </div>
     @endif
     <h2>Валюты</h2>
-    <a class="btn btn-success mt-2 mb-2" href="{{ route('currency.create') }}">Добавить категорию</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('currency.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Код</th>
@@ -34,11 +34,11 @@
                 <td><a href="{{ route('currency.show', $currency) }}" class="btn btn-info">{{ $currency->code }}</a></td>
                 <td>{{ number_format($currency->rate, 2) }}</td>
                 <td>
-                    <a href="{{ route('currency.edit', $currency) }}" class="btn btn-warning d-inline-block">Редактировать</a>
+                    <a href="{{ route('currency.edit', $currency) }}" class="btn btn-warning d-inline-block">@lang('btn.update')</a>
                     <form action="{{ route('currency.destroy', $currency) }}" method="POST" class="d-inline-block">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Удалить</button>
+                        <button type="submit" class="btn btn-danger">@lang('btn.delete')</button>
                     </form>
                 </td>
             </tr>

@@ -45,10 +45,10 @@
         @csrf
         
         @if (isset($role))
-            <button type="submit" class="btn btn-primary">Редактировать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.update')</button>
         @else
-            <button type="submit" class="btn btn-primary">Создать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
         @endif
-        <a class="btn btn-success" href="{{ route('role.index') }}">К списку ролей</a>
+        <a class="btn btn-success" href="{{ route('role.index') }}">@lang('btn.return_to_roles')</a>
     </form>
 @endsection

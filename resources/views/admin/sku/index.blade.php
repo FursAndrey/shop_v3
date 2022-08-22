@@ -22,7 +22,7 @@
         </div>
     @endif
     <h2>СКУ</h2>
-    <a class="btn btn-success mt-2 mb-2" href="{{ route('sku.create') }}">Добавить СКУ</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('sku.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>ID ску</th>
@@ -60,11 +60,11 @@
                     @endforeach
                 </td>
                 <td>
-                    <a href="{{ route('sku.edit', $sku) }}" class="btn btn-warning d-inline-block">Редактировать</a>
+                    <a href="{{ route('sku.edit', $sku) }}" class="btn btn-warning d-inline-block">@lang('btn.update')</a>
                     <form action="{{ route('sku.destroy', $sku) }}" method="POST" class="d-inline-block">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Удалить</button>
+                        <button type="submit" class="btn btn-danger">@lang('btn.delete')</button>
                     </form>
                 </td>
             </tr>

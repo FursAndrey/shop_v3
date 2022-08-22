@@ -31,10 +31,10 @@
         @csrf
         
         @if (isset($currency))
-            <button type="submit" class="btn btn-primary">Редактировать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.update')</button>
         @else
-            <button type="submit" class="btn btn-primary">Создать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
         @endif
-        <a class="btn btn-success" href="{{ route('currency.index') }}">К списку валют</a>
+        <a class="btn btn-success" href="{{ route('currency.index') }}">@lang('btn.return_to_currencies')</a>
     </form>
 @endsection

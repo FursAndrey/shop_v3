@@ -74,10 +74,10 @@
         @csrf
         
         @if (isset($product))
-            <button type="submit" class="btn btn-primary">Редактировать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.update')</button>
         @else
-            <button type="submit" class="btn btn-primary">Создать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
         @endif
-        <a class="btn btn-success" href="{{ route('product.index') }}">К списку продуктов</a>
+        <a class="btn btn-success" href="{{ route('product.index') }}">@lang('btn.return_to_products')</a>
     </form>
 @endsection

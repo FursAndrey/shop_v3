@@ -52,10 +52,10 @@
         @csrf
         
         @if (isset($category))
-            <button type="submit" class="btn btn-primary">Редактировать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.update')</button>
         @else
-            <button type="submit" class="btn btn-primary">Создать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
         @endif
-        <a class="btn btn-success" href="{{ route('category.index') }}">К списку категорий</a>
+        <a class="btn btn-success" href="{{ route('category.index') }}">@lang('btn.return_to_categories')</a>
     </form>
 @endsection

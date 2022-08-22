@@ -31,10 +31,10 @@
         @csrf
         
         @if (isset($property))
-            <button type="submit" class="btn btn-primary">Редактировать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.update')</button>
         @else
-            <button type="submit" class="btn btn-primary">Создать</button>
+            <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
         @endif
-        <a class="btn btn-success" href="{{ route('property.index') }}">К списку свойств</a>
+        <a class="btn btn-success" href="{{ route('property.index') }}">@lang('btn.return_to_properties')</a>
     </form>
 @endsection

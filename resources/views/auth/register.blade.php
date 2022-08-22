@@ -47,14 +47,9 @@
             </div>
 
             <div class="mt-4">
-                <a class="btn btn-danger" href="{{ route('skuListPage') }}">Главная</a>
-                <a class="btn btn-primary ms-3 me-3" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="btn btn-success">
-                    {{ __('Register') }}
-                </x-button>
+                <a class="btn btn-danger" href="{{ route('skuListPage') }}">@lang('btn.home')</a>
+                <a class="btn btn-primary ms-3 me-3" href="{{ route('login') }}">@lang('btn.already_registred')</a>
+                <x-button class="btn btn-success">@lang('btn.register')</x-button>
             </div>
         </form>
     </x-auth-card>

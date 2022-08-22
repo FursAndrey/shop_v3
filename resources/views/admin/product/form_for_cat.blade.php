@@ -57,7 +57,7 @@
         @csrf
         
         <input type="hidden" name="category_id" value="{{ $category->id }}">
-        <button type="submit" class="btn btn-primary">Создать</button>
-        <a class="btn btn-success" href="{{ route('product.index') }}">К списку продуктов</a>
+        <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
+        <a class="btn btn-success" href="{{ route('product.index') }}">@lang('btn.return_to_products')</a>
     </form>
 @endsection

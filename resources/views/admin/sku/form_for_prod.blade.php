@@ -51,7 +51,7 @@
         @endisset
         @csrf
         
-        <button type="submit" class="btn btn-primary">Создать</button>
-        <a class="btn btn-success" href="{{ route('sku.index') }}">К списку СКУ</a>
+        <button type="submit" class="btn btn-primary">@lang('btn.create')</button>
+        <a class="btn btn-success" href="{{ route('sku.index') }}">@lang('btn.return_to_skus')</a>
     </form>
 @endsection

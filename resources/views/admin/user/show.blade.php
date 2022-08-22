@@ -7,7 +7,7 @@
 
 @section('content')
     <h2>Пользователь {{ $user->name }}</h2>
-    <a class="btn btn-success mt-2 mb-2" href="{{ route('user.index') }}">К списку пользователей</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('user.index') }}">@lang('btn.return_to_users')</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название</th>

@@ -22,7 +22,7 @@
         </div>
     @endif
     <h2>Роли</h2>
-    <a class="btn btn-success mt-2 mb-2" href="{{ route('role.create') }}">Добавить роль</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('role.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
             <th>Название RU</th>
@@ -38,11 +38,11 @@
                 <td>{{ $role->description_ru }}</td>
                 <td>{{ $role->description_en }}</td>
                 <td>
-                    <a href="{{ route('role.edit', $role) }}" class="btn btn-warning d-inline-block">Редактировать</a>
+                    <a href="{{ route('role.edit', $role) }}" class="btn btn-warning d-inline-block">@lang('btn.update')</a>
                     <form action="{{ route('role.destroy', $role) }}" method="POST" class="d-inline-block">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Удалить</button>
+                        <button type="submit" class="btn btn-danger">@lang('btn.delete')</button>
                     </form>
                 </td>
             </tr>

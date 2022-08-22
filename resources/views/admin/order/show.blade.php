@@ -7,7 +7,7 @@
 
 @section('content')
     <h2>Заказ {{ $order->id }}</h2>
-    <a class="btn btn-success mt-2 mb-2" href="{{ route('order.index') }}">К списку заказов</a>
+    <a class="btn btn-success mt-2 mb-2" href="{{ route('order.index') }}">@lang('btn.return_to_orders')</a>
     <table class="table table-striped table-hover">
         <tr>
             <th colspan="2">Название</th>
@@ -37,11 +37,11 @@
             <td colspan="2">Статус заказа</td>
             <td colspan="3">
                 @if ($order->status == 0)
-                    <span class="text-warning border border-warning p-1 rounded">Заказ принят</span>
+                    <span class="text-warning border border-warning p-1 rounded">@lang('btn.order_accepted')</span>
                 @elseif ($order->status == 1)
-                    <span class="text-success border border-success p-1 rounded">Заказ выдан</span>
+                    <span class="text-success border border-success p-1 rounded">@lang('btn.order_complited')</span>
                 @else
-                    <span class="text-danger border border-danger p-1 rounded">Заказ отменен</span>
+                    <span class="text-danger border border-danger p-1 rounded">@lang('btn.order_cenceled')</span>
                 @endif
             </td>
         </tr>
@@ -69,12 +69,12 @@
     <p>
         <form action="{{ route('order.success', $order) }}" method="POST" class="d-inline-block">
             @csrf
-            <button type="submit" class="btn btn-success">Заказ выдан</button>
+            <button type="submit" class="btn btn-success">@lang('btn.order_complited')</button>
         </form>
         <form action="{{ route('order.cencel', $order) }}" method="POST" class="d-inline-block">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger">Отменить заказ</button>
+            <button type="submit" class="btn btn-danger">@lang('btn.order_cenceled')</button>
         </form>
     </p>
 @endsection

@@ -15,23 +15,23 @@
     </head>
     <body class="m-3">
         <div>
-            <a @route_active('skuListPage') href="{{ route('skuListPage') }}">Главная</a>
-            <a @route_active('currency.index') href="{{ route('currency.index') }}">Список валют</a>
-            <a @route_active('category.index') href="{{ route('category.index') }}">Список категорий</a>
-            <a @route_active('product.index') href="{{ route('product.index') }}">Список продуктов</a>
-            <a @route_active('sku.index') href="{{ route('sku.index') }}">СКУ</a>
-            <a @route_active('property.index') href="{{ route('property.index') }}">Список свойств</a>
-            <a @route_active('property_option.index') href="{{ route('property_option.index') }}">Список значений свойств</a>
-            <a @route_active('role.index') href="{{ route('role.index') }}">Список ролей пользователей</a>
-            <a @route_active('user.index') href="{{ route('user.index') }}">Список пользователей</a>
-            <a @route_active('order.index') href="{{ route('order.index') }}">Список заказов</a>
+            <a @route_active('skuListPage') href="{{ route('skuListPage') }}">@lang('btn.home')</a>
+            <a @route_active('currency.index') href="{{ route('currency.index') }}">@lang('btn.currencies')</a>
+            <a @route_active('category.index') href="{{ route('category.index') }}">@lang('btn.categories')</a>
+            <a @route_active('product.index') href="{{ route('product.index') }}">@lang('btn.products')</a>
+            <a @route_active('sku.index') href="{{ route('sku.index') }}">@lang('btn.skus')</a>
+            <a @route_active('property.index') href="{{ route('property.index') }}">@lang('btn.properties')</a>
+            <a @route_active('property_option.index') href="{{ route('property_option.index') }}">@lang('btn.options')</a>
+            <a @route_active('role.index') href="{{ route('role.index') }}">@lang('btn.roles')</a>
+            <a @route_active('user.index') href="{{ route('user.index') }}">@lang('btn.users')</a>
+            <a @route_active('order.index') href="{{ route('order.index') }}">@lang('btn.orders')</a>
             @guest
-                <a href="{{ route('login') }}" @route_active('login')>Войти</a>
+                <a href="{{ route('login') }}" @route_active('login')>@lang('btn.login')</a>
             @endguest
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                     @csrf
-                    <button type="submit" title="Выйти" @route_active('logout')>X</button>
+                    <button type="submit" title="Выйти" @route_active('logout')>@lang('btn.logout')</button>
                 </form>
             @endauth
         </div>

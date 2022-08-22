@@ -38,22 +38,22 @@
                 <td>{{ $order->total_price }} {{ $order->currency_code }}</td>
                 <td>
                     @if ($order->status == 0)
-                        <span class="text-warning border border-warning p-1 rounded">Заказ принят</span>
+                        <span class="text-warning border border-warning p-1 rounded">@lang('btn.order_accepted')</span>
                     @elseif ($order->status == 1)
-                        <span class="text-success border border-success p-1 rounded">Заказ выдан</span>
+                        <span class="text-success border border-success p-1 rounded">@lang('btn.order_complited')</span>
                     @else
-                        <span class="text-danger border border-danger p-1 rounded">Заказ отменен</span>
+                        <span class="text-danger border border-danger p-1 rounded">@lang('btn.order_cenceled')</span>
                     @endif
                 </td>
                 <td>
                     <form action="{{ route('order.success', $order) }}" method="POST" class="d-inline-block">
                         @csrf
-                        <button type="submit" class="btn btn-success">Заказ выдан</button>
+                        <button type="submit" class="btn btn-success">@lang('btn.order_complited')</button>
                     </form>
                     <form action="{{ route('order.cencel', $order) }}" method="POST" class="d-inline-block">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Отменить заказ</button>
+                        <button type="submit" class="btn btn-danger">@lang('btn.order_cenceled')</button>
                     </form>
                 </td>
             </tr>
