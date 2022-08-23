@@ -21,12 +21,12 @@
     <h2>Заказы</h2>
     <table class="table table-striped table-hover">
         <tr>
-            <th>ID</th>
-            <th>Имя пользователя</th>
-            <th>Email</th>
-            <th>Коментарий</th>
-            <th>Сумма заказа</th>
-            <th>Статус</th>
+            <th>@lang('tables.id_order')</th>
+            <th>@lang('tables.login')</th>
+            <th>@lang('tables.email')</th>
+            <th>@lang('tables.description')</th>
+            <th>@lang('tables.total_price')</th>
+            <th>@lang('tables.status')</th>
             <th></th>
         </tr>
         @foreach ($orders as $order)

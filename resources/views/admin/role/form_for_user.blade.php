@@ -9,7 +9,7 @@
     <h2>Добавление роли для {{ $user->name }}</h2>
     <form action="{{ route('role.add_role', $user) }}" method="POST">
         <div class="mb-3">
-            <label for="role_id" class="form-label">Роль</label>
+            <label for="role_id" class="form-label">@lang('tables.roles')</label>
             <select name="role_id" class="form-select" id="role_id">
                 @foreach ($roles as $role)
                 <option value="{{ $role->id }}">{{ $role->name_ru }}/{{ $role->name_en }}</option>

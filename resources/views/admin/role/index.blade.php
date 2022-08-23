@@ -25,10 +25,10 @@
     <a class="btn btn-success mt-2 mb-2" href="{{ route('role.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
-            <th>Название RU</th>
-            <th>Название EN</th>
-            <th>Описание RU</th>
-            <th>Описание EN</th>
+            <th>@lang('tables.name_ru')</th>
+            <th>@lang('tables.name_en')</th>
+            <th>@lang('tables.description_ru')</th>
+            <th>@lang('tables.description_en')</th>
             <th></th>
         </tr>
         @foreach ($roles as $role)

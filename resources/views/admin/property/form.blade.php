@@ -15,14 +15,14 @@
         <form action="{{ route('property.store') }}" method="POST">
     @endif
         <div class="mb-3">
-            <label for="name_ru" class="form-label">Название свойства (ru)</label>
+            <label for="name_ru" class="form-label">@lang('tables.name_ru')</label>
             @error('name_ru')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <input type="text" class="form-control" id="name_ru" name="name_ru" @isset($property) value="{{ $property->name_ru }}" @endisset>
         </div>
         <div class="mb-3">
-            <label for="name_en" class="form-label">Название свойства (en)</label>
+            <label for="name_en" class="form-label">@lang('tables.name_en')</label>
             @error('name_en')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror

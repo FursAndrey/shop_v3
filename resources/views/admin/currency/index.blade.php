@@ -25,8 +25,8 @@
     <a class="btn btn-success mt-2 mb-2" href="{{ route('currency.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
-            <th>Код</th>
-            <th>Курс</th>
+            <th>@lang('tables.code')</th>
+            <th>@lang('tables.rate')</th>
             <th></th>
         </tr>
         @foreach ($currencies as $currency)

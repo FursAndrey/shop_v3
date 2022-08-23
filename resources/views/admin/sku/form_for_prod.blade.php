@@ -10,7 +10,7 @@
     <form action="{{ route('sku.store') }}" method="POST">
         <input type="hidden" name="product_id" value="{{ $product->id }}">
         <div class="mb-3">
-            <label for="currency_id" class="form-label">Продукт</label>
+            <label for="currency_id" class="form-label">@lang('tables.product')</label>
             <select name="currency_id" class="form-select" id="currency_id">
                 @foreach ($currencies as $currency)
                 <option value="{{ $currency->id }}">{{ $currency->code }}</option>
@@ -21,14 +21,14 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Цена</label>
+            <label for="price" class="form-label">@lang('tables.price_for_once')</label>
             @error('price')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <input type="text" class="form-control" id="price" name="price">
         </div>
         <div class="mb-3">
-            <label for="count" class="form-label">Колчество</label>
+            <label for="count" class="form-label">@lang('tables.count_in_stoke')</label>
             @error('count')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror

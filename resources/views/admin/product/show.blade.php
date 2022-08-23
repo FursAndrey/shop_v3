@@ -10,31 +10,31 @@
     <a class="btn btn-success mt-2 mb-2" href="{{ route('product.index') }}">@lang('btn.return_to_products')</a>
     <table class="table table-striped table-hover">
         <tr>
-            <th>Название</th>
-            <th>Значение</th>
+            <th>@lang('tables.name')</th>
+            <th>@lang('tables.value')</th>
         </tr>
         <tr>
-            <td>Изображение</td>
+            <td>@lang('tables.img')</td>
             <td><img src="{{ $product->img_for_view }}" alt="изображение не добавлено" style="width: 200px;"></td>
         </tr>
         <tr>
-            <td>Название RU</td>
+            <td>@lang('tables.name_ru')</td>
             <td>{{ $product->name_ru }}</td>
         </tr>
         <tr>
-            <td>Название EN</td>
+            <td>@lang('tables.name_en')</td>
             <td>{{ $product->name_en }}</td>
         </tr>
         <tr>
-            <td>Описание RU</td>
+            <td>@lang('tables.description_ru')</td>
             <td>{{ $product->description_ru }}</td>
         </tr>
         <tr>
-            <td>Описание EN</td>
+            <td>@lang('tables.description_en')</td>
             <td>{{ $product->description_en }}</td>
         </tr>
         <tr>
-            <td>СКУ</td>
+            <td>@lang('tables.id_sku')</td>
             <td>
                 @foreach ($product->skus as $sku)
                     {{ $sku->id }}<br/>
@@ -42,11 +42,11 @@
             </td>
         </tr>
         <tr>
-            <td>Категория</td>
+            <td>@lang('tables.category')</td>
             <td>{{ $product->category->name_ru }}/{{ $product->category->name_en }}</td>
         </tr>
         <tr>
-            <td>Свойства продукта</td>
+            <td>@lang('tables.property')</td>
             <td>
                 @php
                     $properties = $product->properties->toArray();

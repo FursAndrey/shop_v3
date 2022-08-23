@@ -25,13 +25,13 @@
     <a class="btn btn-success mt-2 mb-2" href="{{ route('sku.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
-            <th>ID ску</th>
-            <th>Товар</th>
-            <th>Цена</th>
-            <th>Валюта</th>
-            <th>Количество</th>
-            <th>Свойство</th>
-            <th>Значение</th>
+            <th>@lang('tables.id_sku')</th>
+            <th>@lang('tables.product')</th>
+            <th>@lang('tables.price_for_once')</th>
+            <th>@lang('tables.currency')</th>
+            <th>@lang('tables.count_in_stoke')</th>
+            <th>@lang('tables.property')</th>
+            <th>@lang('tables.option')</th>
             <th></th>
         </tr>
         @foreach ($skus as $sku)

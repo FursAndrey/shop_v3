@@ -10,28 +10,28 @@
     <a class="btn btn-success mt-2 mb-2" href="{{ route('sku.index') }}">@lang('btn.return_to_skus')</a>
     <table class="table table-striped table-hover">
         <tr>
-            <th>Название</th>
-            <th>Значение</th>
+            <th>@lang('tables.name')</th>
+            <th>@lang('tables.value')</th>
         </tr>
         <tr>
-            <td>ID ску</td>
+            <td>@lang('tables.id_sku')</td>
             <td>{{ $sku->id }}</td>
         </tr>
         <tr>
-            <td>Цена</td>
+            <td>@lang('tables.price_for_once')</td>
             <td>{{ $sku->price }}</td>
         </tr>
         <tr>
-            <td>Количество</td>
+            <td>@lang('tables.count_in_stoke')</td>
             <td>{{ $sku->count }}</td>
         </tr>
         <tr>
-            <td>Продукт</td>
+            <td>@lang('tables.product')</td>
             <td>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</td>
         </tr>
         <tr>
-            <td><b>Свойство</b></td>
-            <td><b>Значение свойства</b></td>
+            <td><b>@lang('tables.property')</b></td>
+            <td><b>@lang('tables.option')</b></td>
         </tr>
         @foreach ($sku->product->properties as $property)
             <tr>

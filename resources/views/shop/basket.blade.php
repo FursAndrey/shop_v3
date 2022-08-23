@@ -21,13 +21,13 @@
     <h2>Корзина</h2>
     <table class="table table-striped table-hover">
         <tr>
-            <th>ID ску</th>
-            <th>Товар</th>
-            <th>Цена за 1</th>
-            <th>Цена</th>
-            <th>Кол-во в заказе</th>
-            <th>Кол-во на складе</th>
-            <th>Характеристики</th>
+            <th>@lang('tables.id_sku')</th>
+            <th>@lang('tables.product')</th>
+            <th>@lang('tables.price_for_once')</th>
+            <th>@lang('tables.price')</th>
+            <th>@lang('tables.count_in_order')</th>
+            <th>@lang('tables.count_in_stoke')</th>
+            <th>@lang('tables.parameters')</th>
             <th></th>
         </tr>
         @php
@@ -50,9 +50,7 @@
                     @if ($sku->countInBasket < $sku->count)
                         <form action="{{ route('addToBasket', $sku) }}" method="POST" class="d-inline-block">
                             @csrf
-                            <button type="submit" class="btn btn-success" title="@lang('btn.add_to_basket')">
-                                +
-                            </button>
+                            <button type="submit" class="btn btn-success" title="@lang('btn.add_to_basket')">+</button>
                         </form>
                     @else
                         <span class="d-inline-block btn btn-secondary" title="@lang('btn.not_available')">+</span>
@@ -65,7 +63,7 @@
                         </button>
                     </form>
                 </td>
-                <td>не более {{ $sku->count }}</td>
+                <td>@lang('tables.no_more_than') {{ $sku->count }}</td>
                 <td>
                     @foreach ($sku->product->properties as $property)
                         {{ $property->name_ru }}/{{ $property->name_en }}:
@@ -84,15 +82,13 @@
                     <form action="{{ route('remuveThisSkuFromBasket', $sku) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" title="@lang('btn.remove_from_basket')">
-                            Х
-                        </button>
+                        <button type="submit" class="btn btn-danger" title="@lang('btn.remove_from_basket')">Х</button>
                     </form>
                 </td>
             </tr>
         @endforeach
     </table>
-    <p><b>Общая сумма заказа</b> {{ $totalPrice }}{{ $sku->cur_code }}</p>
+    <p><b>@lang('tables.total_price')</b> {{ $totalPrice }}{{ $sku->cur_code }}</p>
     <a href="{{ route('confirmOrderForm') }}" class="btn btn-success">@lang('btn.create_order')</a>
     <form action="{{ route('clearBasket') }}" method="POST" class="d-inline-block">
         @csrf

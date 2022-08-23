@@ -10,15 +10,15 @@
     <a class="btn btn-success mt-2 mb-2" href="{{ route('currency.index') }}">@lang('btn.return_to_currencies')</a>
     <table class="table table-striped table-hover">
         <tr>
-            <th>Название</th>
-            <th>Значение</th>
+            <th>@lang('tables.name')</th>
+            <th>@lang('tables.value')</th>
         </tr>
         <tr>
-            <td>Код</td>
+            <td>@lang('tables.code')</td>
             <td>{{ $currency->code }}</td>
         </tr>
         <tr>
-            <td>Курс</td>
+            <td>@lang('tables.rate')</td>
             <td>{{ $currency->rate }}</td>
         </tr>
     </table>

@@ -10,19 +10,19 @@
     <a class="btn btn-success mt-2 mb-2" href="{{ route('property.index') }}">@lang('btn.return_to_properties')</a>
     <table class="table table-striped table-hover">
         <tr>
-            <th>Название</th>
-            <th>Значение</th>
+            <th>@lang('tables.name')</th>
+            <th>@lang('tables.value')</th>
         </tr>
         <tr>
-            <td>Название RU</td>
+            <td>@lang('tables.name_ru')</td>
             <td>{{ $property->name_ru }}</td>
         </tr>
         <tr>
-            <td>Название EN</td>
+            <td>@lang('tables.name_en')</td>
             <td>{{ $property->name_en }}</td>
         </tr>
         <tr>
-            <td>Значения</td>
+            <td>@lang('tables.option')</td>
             <td>
                 @foreach ($property->propertyOptions as $propertyOption)
                     {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}<br/>

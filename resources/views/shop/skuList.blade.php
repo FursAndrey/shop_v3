@@ -34,7 +34,7 @@
                             </button>
                         </form>
                     @else
-                        <p class="btn btn-danger">@lang('btn.not_available_for_order')</p>
+                        <p class="text-danger border border-danger p-1 d-inline">@lang('btn.not_available_for_order')</p>
                     @endif
                 </div>
             @endforeach

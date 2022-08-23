@@ -25,12 +25,12 @@
     <a class="btn btn-success mt-2 mb-2" href="{{ route('category.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
-            <th>Код</th>
-            <th>Название RU</th>
-            <th>Название EN</th>
-            <th>Описание RU</th>
-            <th>Описание EN</th>
-            <th>Продукты</th>
+            <th>@lang('tables.code')</th>
+            <th>@lang('tables.name_ru')</th>
+            <th>@lang('tables.name_en')</th>
+            <th>@lang('tables.description_ru')</th>
+            <th>@lang('tables.description_en')</th>
+            <th>@lang('tables.products')</th>
             <th></th>
         </tr>
         @foreach ($categories as $category)

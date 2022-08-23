@@ -8,7 +8,7 @@
         <form action="{{ route('confirmOrder') }}" method="post">
             <div class="mb-4">
                 <div>
-                    <label for="user_name" class="form-label col-12">Имя<span style="color:red">*</span></label>
+                    <label for="user_name" class="form-label col-12">@lang('tables.login')<span style="color:red">*</span></label>
                     @error('user_name')
                         <div class="alert alert-danger p-3">{{ $message }}</div>
                     @enderror
@@ -18,7 +18,7 @@
             @guest
                 <div class="mb-4">
                     <div>
-                        <label for="user_email" class="form-label col-12">Email<span style="color:red">*</span></label>
+                        <label for="user_email" class="form-label col-12">@lang('tables.email')<span style="color:red">*</span></label>
                         @error('user_email')
                             <div class="alert alert-danger p-3">{{ $message }}</div>
                         @enderror
@@ -31,7 +31,7 @@
                     <div class="alert alert-danger p-3">{{ $message }}</div>
                 @enderror
                 <div>
-                    <label for="description" class="form-label col-12">Примечание</label>
+                    <label for="description" class="form-label col-12">@lang('tables.description')</label>
                     @error('description')
                         <div class="alert alert-danger p-3">{{ $message }}</div>
                     @enderror

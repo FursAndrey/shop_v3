@@ -15,28 +15,28 @@
         <form action="{{ route('role.store') }}" method="POST">
     @endif
         <div class="mb-3">
-            <label for="name_ru" class="form-label">Название роли (ru)</label>
+            <label for="name_ru" class="form-label">@lang('tables.name_ru')</label>
             @error('name_ru')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <input type="text" class="form-control" id="name_ru" name="name_ru" @isset($role) value="{{ $role->name_ru }}" @endisset>
         </div>
         <div class="mb-3">
-            <label for="name_en" class="form-label">Название роли (en)</label>
+            <label for="name_en" class="form-label">@lang('tables.name_en')</label>
             @error('name_en')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <input type="text" class="form-control" id="name_en" name="name_en" @isset($role) value="{{ $role->name_en }}" @endisset>
         </div>
         <div class="mb-3">
-            <label for="description_ru" class="form-label">Описание роли (ru)</label>
+            <label for="description_ru" class="form-label">@lang('tables.description_ru')</label>
             @error('description_ru')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <textarea class="form-control" id="description_ru" name="description_ru" rows="3">@isset($role) {{ $role->description_ru }} @endisset</textarea>
         </div>
         <div class="mb-3">
-            <label for="description_en" class="form-label">Описание роли (en)</label>
+            <label for="description_en" class="form-label">@lang('tables.description_en')</label>
             @error('description_en')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror

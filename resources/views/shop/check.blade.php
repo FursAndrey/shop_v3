@@ -42,27 +42,27 @@
         <h2>Заказ {{ $order->id }}</h2>
         <table @if (!$isPDF) class="table table-striped table-hover"@endif>
             <tr>
-                <td colspan="2">ID заказа</td>
+                <td colspan="2">@lang('tables.id_order')</td>
                 <td colspan="3">{{ $order->id }}</td>
             </tr>
             <tr>
-                <td colspan="2">Имя пользователя</td>
+                <td colspan="2">@lang('tables.login')</td>
                 <td colspan="3">{{ $order->user_name }}</td>
             </tr>
             <tr>
-                <td colspan="2">Email пользователя</td>
+                <td colspan="2">@lang('tables.email')</td>
                 <td colspan="3">{{ $order->user_email }}</td>
             </tr>
             <tr>
-                <td colspan="2">Описание заказа</td>
+                <td colspan="2">@lang('tables.description')</td>
                 <td colspan="3">{{ $order->description }}</td>
             </tr>
             <tr>
-                <td colspan="2">Сумма заказа</td>
+                <td colspan="2">@lang('tables.total_price')</td>
                 <td colspan="3">{{ $order->total_price }} {{ $order->currency_code }}</td>
             </tr>
             <tr>
-                <td colspan="2">Статус заказа</td>
+                <td colspan="2">@lang('tables.status')</td>
                 <td colspan="3">
                     @if ($order->status == 0)
                         <span @if (!$isPDF)class="text-warning border border-warning p-1 rounded"@endif>@lang('btn.order_accepted')</span>
@@ -74,11 +74,11 @@
                 </td>
             </tr>
             <tr>
-                <th>Название товара</th>
-                <th>№ СКУ</th>
-                <th>Цена за ед.</th>
-                <th>Количество</th>
-                <th>Свойства</th>
+                <th>@lang('tables.product')</th>
+                <th>@lang('tables.id_sku')</th>
+                <th>@lang('tables.price_for_once')</th>
+                <th>@lang('tables.count_in_order')</th>
+                <th>@lang('tables.parameters')</th>
             </tr>
             @foreach ($order->orderedProducts as $product)
                 <tr>

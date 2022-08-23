@@ -15,14 +15,14 @@
         <form action="{{ route('currency.store') }}" method="POST">
     @endif
         <div class="mb-3">
-            <label for="code" class="form-label">Код</label>
+            <label for="code" class="form-label">@lang('tables.code')</label>
             @error('code')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <input type="text" class="form-control" id="code" name="code" @isset($currency) value="{{ $currency->code }}" @endisset>
         </div>
         <div class="mb-3">
-            <label for="rate" class="form-label">Курс</label>
+            <label for="rate" class="form-label">@lang('tables.rate')</label>
             @error('rate')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror

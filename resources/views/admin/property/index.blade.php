@@ -25,9 +25,9 @@
     <a class="btn btn-success mt-2 mb-2" href="{{ route('property.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
-            <th>Название RU</th>
-            <th>Название EN</th>
-            <th>Значения</th>
+            <th>@lang('tables.name_ru')</th>
+            <th>@lang('tables.name_en')</th>
+            <th>@lang('tables.option')</th>
             <th></th>
         </tr>
         @foreach ($properties as $property)

@@ -9,14 +9,14 @@
         <h2>Создние значения для свойства {{ $property->name_ru.'/'.$property->name_en }}</h2>
         <form action="{{ route('property_option.store') }}" method="POST">
         <div class="mb-3">
-            <label for="name_ru" class="form-label">Название значения свойства (ru)</label>
+            <label for="name_ru" class="form-label">@lang('tables.name_ru')</label>
             @error('name_ru')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <input type="text" class="form-control" id="name_ru" name="name_ru">
         </div>
         <div class="mb-3">
-            <label for="name_en" class="form-label">Название значения свойства (en)</label>
+            <label for="name_en" class="form-label">@lang('tables.name_en')</label>
             @error('name_en')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror

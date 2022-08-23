@@ -24,9 +24,9 @@
     <h2>Пользователи</h2>
     <table class="table table-striped table-hover">
         <tr>
-            <th>Логин</th>
-            <th>Почта</th>
-            <th>Роли</th>
+            <th>@lang('tables.login')</th>
+            <th>@lang('tables.email')</th>
+            <th>@lang('tables.roles')</th>
             <th></th>
         </tr>
         @foreach ($users as $user)

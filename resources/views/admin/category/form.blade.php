@@ -15,35 +15,35 @@
         <form action="{{ route('category.store') }}" method="POST">
     @endif
         <div class="mb-3">
-            <label for="name_ru" class="form-label">Название категории (ru)</label>
+            <label for="name_ru" class="form-label">@lang('tables.name_ru')</label>
             @error('name_ru')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <input type="text" class="form-control" id="name_ru" name="name_ru" @isset($category) value="{{ $category->name_ru }}" @endisset>
         </div>
         <div class="mb-3">
-            <label for="name_en" class="form-label">Название категории (en)</label>
+            <label for="name_en" class="form-label">@lang('tables.name_en')</label>
             @error('name_en')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <input type="text" class="form-control" id="name_en" name="name_en" @isset($category) value="{{ $category->name_en }}" @endisset>
         </div>
         <div class="mb-3">
-            <label for="code" class="form-label">Код</label>
+            <label for="code" class="form-label">@lang('tables.code')</label>
             @error('code')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <input type="text" class="form-control" id="code" name="code" @isset($category) value="{{ $category->code }}" @endisset>
         </div>
         <div class="mb-3">
-            <label for="description_ru" class="form-label">Описание категории (ru)</label>
+            <label for="description_ru" class="form-label">@lang('tables.description_ru')</label>
             @error('description_ru')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror
             <textarea class="form-control" id="description_ru" name="description_ru" rows="3">@isset($category) {{ $category->description_ru }} @endisset</textarea>
         </div>
         <div class="mb-3">
-            <label for="description_en" class="form-label">Описание категории (en)</label>
+            <label for="description_en" class="form-label">@lang('tables.description_en')</label>
             @error('description_en')
                 <div class="error alert-danger p-3">{{ $message }}</div>
             @enderror

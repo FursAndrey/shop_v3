@@ -11,7 +11,7 @@
             </div>
             <div class="col-9">
                 <h4>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</h4>
-                <p>SKU: {{ $sku->id }}</p>
+                <p>@lang('tables.id_sku'): {{ $sku->id }}</p>
                 <p>{{ $sku->product->description_ru }}/{{ $sku->product->description_en }}</p>
                 <p>{{ $sku->price }} {{ $sku->cur_code }}</p>
                 @if ($sku->count > 0)
@@ -26,7 +26,7 @@
                 @endif
             </div>
         </div>
-        <p class="mt-5">Характеристики:</p>
+        <p class="mt-5">@lang('tables.parameters'):</p>
         @foreach ($sku->product->properties as $property)
             <div class="row">
                 <div class="col-3">{{ $property->name_ru }}/{{ $property->name_en }}</div>
