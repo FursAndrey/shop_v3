@@ -38,6 +38,13 @@
                     @endforeach
                 </ul>
             </div>
+            <div class="head-menu">
+                <a @route_active('#') href="#">{{ strtoupper(session('locale', 'RU')) }}</a>
+                <ul>
+                    <li><a @route_active('setLocale') href="{{ route('setLocale', 'ru') }}">RU</a></li>
+                    <li><a @route_active('setLocale') href="{{ route('setLocale', 'en') }}">EN</a></li>
+                </ul>
+            </div>
         </div>
         @yield('content')
 		<!-- all js here -->

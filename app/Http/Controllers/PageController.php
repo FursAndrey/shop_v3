@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sku;
 use Illuminate\Http\Request;
 use App\MyServices\CurrencyConversion;
+use Illuminate\Support\Facades\App;
 
 class PageController extends Controller
 {
@@ -27,4 +28,12 @@ class PageController extends Controller
         session(['currency' => $currency_code]);
         return redirect()->back();
     }
+    
+    public function setLocale($locale)
+    {
+        session(['locale' => $locale]);
+        App::setLocale($locale);
+        return redirect()->back();
+    }
+    
 }
