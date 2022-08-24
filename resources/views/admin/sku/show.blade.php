@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td>@lang('tables.product')</td>
-            <td>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</td>
+            <td>{{ $sku->product->name }}</td>
         </tr>
         <tr>
             <td><b>@lang('tables.property')</b></td>
@@ -35,12 +35,12 @@
         </tr>
         @foreach ($sku->product->properties as $property)
             <tr>
-                <td>{{ $property->name_ru }}/{{ $property->name_en }}</td>
+                <td>{{ $property->name }}</td>
                 <td>
                     @if(isset($sku->property_options))
                         @foreach ($sku->property_options as $propertyOption)
                             @if ($propertyOption->property->id == $property->id)
-                                {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}
+                                {{ $propertyOption->name }}
                             @endif
                         @endforeach
                     @else

@@ -25,7 +25,7 @@
             <td>@lang('tables.option')</td>
             <td>
                 @foreach ($property->propertyOptions as $propertyOption)
-                    {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}<br/>
+                    {{ $propertyOption->name }}<br/>
                 @endforeach
             </td>
         </tr>

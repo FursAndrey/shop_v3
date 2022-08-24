@@ -37,13 +37,13 @@
         @foreach ($skus as $sku)
             <tr>
                 <td><a href="{{ route('sku.show', $sku) }}" class="btn btn-info">{{ $sku->id }}</a></td>
-                <td>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</td>
+                <td>{{ $sku->product->name }}</td>
                 <td>{{ $sku->price }}</td>
                 <td>{{ $sku->currency->code }}</td>
                 <td>{{ $sku->count }}</td>
                 <td>
                     @foreach ($sku->product->properties as $property)
-                        {{ $property->name_ru }}/{{ $property->name_en }}<br/>
+                        {{ $property->name }}<br/>
                     @endforeach
                 </td>
                 <td>
@@ -51,7 +51,7 @@
                         @if(isset($sku->property_options))
                             @foreach ($sku->property_options as $propertyOption)
                                 @if ($propertyOption->property->id == $property->id)
-                                    {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}<br/>
+                                    {{ $propertyOption->name }}<br/>
                                 @endif
                             @endforeach
                         @else

@@ -42,7 +42,7 @@
                 <td>{{ $sku->id }}</td>
                 <td>
                     <p><a href="{{ route('sku.show', $sku) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 100px;"></a></p>
-                    <p><a href="{{ route('sku.show', $sku) }}" class="btn btn-info">{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</a></p>
+                    <p><a href="{{ route('sku.show', $sku) }}" class="btn btn-info">{{ $sku->product->name }}</a></p>
                 </td>
                 <td>{{ $sku->price }} {{ $sku->cur_code }}</td>
                 <td>{{ $priceInBasket }} {{ $sku->cur_code }}</td>
@@ -66,11 +66,11 @@
                 <td>@lang('tables.no_more_than') {{ $sku->count }}</td>
                 <td>
                     @foreach ($sku->product->properties as $property)
-                        {{ $property->name_ru }}/{{ $property->name_en }}:
+                        {{ $property->name }}:
                         @if(isset($sku->property_options))
                             @foreach ($sku->property_options as $propertyOption)
                                 @if ($propertyOption->property->id == $property->id)
-                                    {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}<br/>
+                                    {{ $propertyOption->name }}<br/>
                                 @endif
                             @endforeach
                         @else

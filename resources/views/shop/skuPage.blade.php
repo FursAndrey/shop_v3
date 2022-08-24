@@ -10,9 +10,9 @@
                 <img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 200px;">
             </div>
             <div class="col-9">
-                <h4>{{ $sku->product->name_ru }}/{{ $sku->product->name_en }}</h4>
+                <h4>{{ $sku->product->name }}</h4>
                 <p>@lang('tables.id_sku'): {{ $sku->id }}</p>
-                <p>{{ $sku->product->description_ru }}/{{ $sku->product->description_en }}</p>
+                <p>{{ $sku->product->description }}</p>
                 <p>{{ $sku->price }} {{ $sku->cur_code }}</p>
                 @if ($sku->count > 0)
                     <form action="{{ route('addToBasket', $sku) }}" method="POST">
@@ -29,12 +29,12 @@
         <p class="mt-5">@lang('tables.parameters'):</p>
         @foreach ($sku->product->properties as $property)
             <div class="row">
-                <div class="col-3">{{ $property->name_ru }}/{{ $property->name_en }}</div>
+                <div class="col-3">{{ $property->name }}</div>
                 <div class="col-9">
                     @if(isset($sku->property_options))
                         @foreach ($sku->property_options as $propertyOption)
                             @if ($propertyOption->property->id == $property->id)
-                                {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}
+                                {{ $propertyOption->name }}
                             @endif
                         @endforeach
                     @else

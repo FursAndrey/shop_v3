@@ -36,7 +36,7 @@
                 <td><a href="{{ route('property.show', $property) }}" class="btn btn-info">{{ $property->name_en }}</a></td>
                 <td>
                     @foreach ($property->propertyOptions as $propertyOption)
-                        {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}<br/>
+                        {{ $propertyOption->name }}<br/>
                     @endforeach
                 </td>
                 <td>

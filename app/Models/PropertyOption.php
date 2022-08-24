@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\dbTranslate;
 
 class PropertyOption extends Model
 {
-    use HasFactory;
+    use HasFactory, dbTranslate;
     
     protected $fillable = [
         'name_ru',
@@ -24,4 +25,11 @@ class PropertyOption extends Model
     {
         return $this->belongsToMany(Sku::class)->withTimestamps();;
     }
+    
+    public function getNameAttribute()
+    {
+        $fieldName = $this->translate('name');
+        return $this->$fieldName;
+    }
+
 }

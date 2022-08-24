@@ -40,7 +40,7 @@
             <label for="property_id" class="form-label">@lang('tables.property')</label>
             <select name="property_id[]" class="form-select" id="property_id" multiple size="5">
                 @foreach ($properties as $property)
-                <option value="{{ $property->id }}" {{ (isset($product) && $product->property_id == $property->id)? 'selected': '' }}>{{ $property->id }} - {{ $property->name_ru.'/'.$property->name_en }}</option>
+                <option value="{{ $property->id }}" {{ (isset($product) && $product->property_id == $property->id)? 'selected': '' }}>{{ $property->id }} - {{ $property->name }}</option>
                 @endforeach
             </select>
             @error('property_id')

@@ -35,7 +35,7 @@
                 <td>{{ $user->email }}</td>
                 <td>
                     @foreach ($user->roles as $role)
-                        {{ $role->name_ru }}/{{ $role->name_en }}<br/>
+                        {{ $role->name }}<br/>
                     @endforeach
                 </td>
                 <td><a href="{{ route('role.create_for_user', $user) }}" class="btn btn-primary d-inline-block">@lang('btn.add_role')</a></td>

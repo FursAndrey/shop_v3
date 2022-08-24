@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\dbTranslate;
 
 class OrderedProperty extends Model
 {
-    use HasFactory;
+    use HasFactory, dbTranslate;
     
     protected $fillable = [
         'ordered_product_id',
@@ -21,4 +22,17 @@ class OrderedProperty extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    
+    public function getPropertyNameAttribute()
+    {
+        $fieldName = $this->translate('property_name');
+        return $this->$fieldName;
+    }
+
+    public function getOptionNameAttribute()
+    {
+        $fieldName = $this->translate('option_name');
+        return $this->$fieldName;
+    }
+
 }

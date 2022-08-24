@@ -46,7 +46,7 @@
             <label for="category_id" class="form-label">Категория</label>
             <select name="category_id" class="form-select" id="category_id">
                 @foreach ($categories as $category)
-                <option value="{{ $category->id }}" {{ (isset($product) && $product->category_id == $category->id)? 'selected': '' }}>{{ $category->id }} - {{ $category->name_ru.'/'.$category->name_en }}</option>
+                <option value="{{ $category->id }}" {{ (isset($product) && $product->category_id == $category->id)? 'selected': '' }}>{{ $category->id }} - {{ $category->name }}</option>
                 @endforeach
             </select>
             @error('category_id')
@@ -57,7 +57,7 @@
             <label for="property_id" class="form-label">@lang('tables.property')</label>
             <select name="property_id[]" class="form-select" id="property_id" multiple size="5">
                 @foreach ($properties as $property)
-                <option value="{{ $property->id }}" {{ (isset($product) && $product->property_id == $property->id)? 'selected': '' }}>{{ $property->id }} - {{ $property->name_ru.'/'.$property->name_en }}</option>
+                <option value="{{ $property->id }}" {{ (isset($product) && $product->property_id == $property->id)? 'selected': '' }}>{{ $property->id }} - {{ $property->name }}</option>
                 @endforeach
             </select>
             @error('property_id')

@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <h2>Продукт {{ $product->name_ru }}/{{ $product->name_en }}</h2>
+    <h2>Продукт {{ $product->name }}</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('product.index') }}">@lang('btn.return_to_products')</a>
     <table class="table table-striped table-hover">
         <tr>
@@ -43,16 +43,13 @@
         </tr>
         <tr>
             <td>@lang('tables.category')</td>
-            <td>{{ $product->category->name_ru }}/{{ $product->category->name_en }}</td>
+            <td>{{ $product->category->name }}</td>
         </tr>
         <tr>
             <td>@lang('tables.property')</td>
             <td>
-                @php
-                    $properties = $product->properties->toArray();
-                @endphp
-                @foreach ($properties as $property)
-                    {{ $property['name_ru'] }}/{{ $property['name_en'] }}<br/>
+                @foreach ($product->properties as $property)
+                    {{ $property->name }}<br/>
                 @endforeach
             </td>
         </tr>

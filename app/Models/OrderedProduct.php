@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\MyServices\CurrencyConversion;
+use App\Models\Traits\dbTranslate;
 
 class OrderedProduct extends Model
 {
-    use HasFactory;
+    use HasFactory, dbTranslate;
 
     protected $fillable = [
         'order_id',
@@ -28,4 +29,11 @@ class OrderedProduct extends Model
     {
         return $this->hasMany(OrderedProperty::class);
     }
+    
+    public function getNameAttribute()
+    {
+        $fieldName = $this->translate('name');
+        return $this->$fieldName;
+    }
+
 }

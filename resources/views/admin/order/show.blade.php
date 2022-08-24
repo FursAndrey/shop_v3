@@ -54,13 +54,13 @@
         </tr>
         @foreach ($order->orderedProducts as $product)
             <tr>
-                <td>{{ $product->name_ru }}/{{ $product->name_en }}</td>
+                <td>{{ $product->name }}</td>
                 <td>{{ $product->sku_id }}</td>
                 <td>{{ $product->price_for_once }} {{ $order->currency_code }}</td>
                 <td>{{ $product->count }}</td>
                 <td>
                     @foreach ($product->orderedProperties as $property)
-                        {{ $property->property_name_ru }}/{{ $property->property_name_en }} => {{ $property->option_name_ru }}/{{ $property->option_name_en }}<br/>
+                        {{ $property->property_name }} => {{ $property->option_name }}<br/>
                     @endforeach
                 </td>
             </tr>

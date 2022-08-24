@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <h2>Значение свойства {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}</h2>
+    <h2>Значение свойства {{ $propertyOption->name }}</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('property_option.index') }}">@lang('btn.return_to_options')</a>
     <table class="table table-striped table-hover">
         <tr>
@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td>@lang('tables.name')</td>
-            <td>{{ $propertyOption->property->name_ru }}/{{ $propertyOption->property->name_en }}</td>
+            <td>{{ $propertyOption->property->name }}</td>
         </tr>
     </table>
 @endsection

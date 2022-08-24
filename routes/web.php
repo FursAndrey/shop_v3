@@ -69,4 +69,3 @@ Route::middleware('changeLocale')->group(function () {
 
     require __DIR__.'/auth.php';
 });
-

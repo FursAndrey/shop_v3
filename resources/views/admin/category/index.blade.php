@@ -42,7 +42,7 @@
                 <td>{{ $category->description_en }}</td>
                 <td>
                     @foreach ($category->products as $product)
-                        {{ $product->name_ru }}/{{ $product->name_en }}<br/>
+                        {{ $product->name }}<br/>
                     @endforeach
                 </td>
                 <td>

@@ -7,7 +7,7 @@
 
 @section('content')
     @if (isset($category))
-        <h2>Редактирование категории {{ $category->name_ru }}/{{ $category->name_en }}</h2>
+        <h2>Редактирование категории {{ $category->name }}</h2>
         <form action="{{ route('category.update', $category) }}" method="POST">
             @method('PUT')
     @else
