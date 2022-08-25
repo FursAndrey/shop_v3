@@ -1,6 +1,6 @@
 @extends('../admin/main')
 
-@section('title') Заказы @endsection
+@section('title') @lang('headers.orders') @endsection
 
 @section('content')
     @if ($message = Session::get('success'))
@@ -18,7 +18,7 @@
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
-    <h2>Заказы</h2>
+    <h2>@lang('headers.orders')</h2>
     <table class="table table-striped table-hover">
         <tr>
             <th>@lang('tables.id_order')</th>

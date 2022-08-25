@@ -1,6 +1,6 @@
 @extends('../admin/main')
 
-@section('title') Пользователи @endsection
+@section('title') @lang('headers.users') @endsection
 
 @section('header_styles')
 @endsection
@@ -21,7 +21,7 @@
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
-    <h2>Пользователи</h2>
+    <h2>@lang('headers.users')</h2>
     <table class="table table-striped table-hover">
         <tr>
             <th>@lang('tables.login')</th>

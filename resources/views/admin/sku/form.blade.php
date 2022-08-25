@@ -1,24 +1,24 @@
 @extends('../admin/main')
 
-@section('title') Создние/Редактирование СКУ @endsection
+@section('title') @lang('headers.create_update_sku') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
     @if (isset($sku))
-        <h2>Редактирование СКУ {{ $sku->id }}</h2>
+        <h2>@lang('headers.update_sku') {{ $sku->id }}</h2>
         <form action="{{ route('sku.update', $sku) }}" method="POST">
             @method('PUT')
     @else
-        <h2>Создние СКУ</h2>
+        <h2>@lang('headers.create_sku')</h2>
         <form action="{{ route('sku.store') }}" method="POST">
     @endif
         <div class="mb-3">
             <label for="product_id" class="form-label">@lang('tables.product')</label>
             <select name="product_id" class="form-select" id="product_id">
                 @foreach ($products as $product)
-                <option value="{{ $product->id }}" {{ (isset($sku) && $sku->product_id == $product->id)? 'selected': '' }}>{{ $product->id }} - {{ $product->name_ru.'/'.$product->name_en }}</option>
+                <option value="{{ $product->id }}" {{ (isset($sku) && $sku->product_id == $product->id)? 'selected': '' }}>{{ $product->name }}</option>
                 @endforeach
             </select>
             @error('product_id')
@@ -53,10 +53,10 @@
         @isset($sku)
             @foreach ($sku->product->properties as $property)
                 <div class="mb-3">
-                    <label for="property_option_id" class="form-label">@lang('tables.property') {{ $property->name_ru }}/{{ $property->name_en }}</label>
+                    <label for="property_option_id" class="form-label">@lang('tables.property') {{ $property->name }}</label>
                     <select name="property_option_id[]" class="form-select" id="property_option_id">
                         @foreach ($property->propertyOptions as $propertyOption)
-                            <option value="{{ $propertyOption->id }}" {{ (isset($sku) && $sku->property_option_id == $propertyOption->id)? 'selected': '' }}>{{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}</option>
+                            <option value="{{ $propertyOption->id }}" {{ (isset($sku) && $sku->property_option_id == $propertyOption->id)? 'selected': '' }}>{{ $propertyOption->name }}</option>
                         @endforeach
                     </select>
                     @error('property_option_id')

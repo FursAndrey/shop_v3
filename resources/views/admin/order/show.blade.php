@@ -1,12 +1,12 @@
     @extends('../admin/main')
 
-@section('title') Заказ @endsection
+@section('title') @lang('headers.order') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-    <h2>Заказ {{ $order->id }}</h2>
+    <h2>@lang('headers.order') {{ $order->id }}</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('order.index') }}">@lang('btn.return_to_orders')</a>
     <table class="table table-striped table-hover">
         <tr>

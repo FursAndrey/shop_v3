@@ -1,12 +1,12 @@
     @extends('../admin/main')
 
-@section('title') СКУ @endsection
+@section('title') @lang('headers.sku') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-    <h2>СКУ {{ $sku->id }}</h2>
+    <h2>@lang('headers.sku') {{ $sku->id }}</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('sku.index') }}">@lang('btn.return_to_skus')</a>
     <table class="table table-striped table-hover">
         <tr>

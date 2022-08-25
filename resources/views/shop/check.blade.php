@@ -2,7 +2,7 @@
 <html class="no-js" lang="zxx">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Заказ</title>
+        <title>@lang('headers.order')</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -39,7 +39,7 @@
             </div>
         @endif
         
-        <h2>Заказ {{ $order->id }}</h2>
+        <h2>@lang('headers.order') {{ $order->id }}</h2>
         <table @if (!$isPDF) class="table table-striped table-hover"@endif>
             <tr>
                 <td colspan="2">@lang('tables.id_order')</td>

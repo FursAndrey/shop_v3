@@ -1,6 +1,6 @@
 @extends('../admin/main')
 
-@section('title') СКУ @endsection
+@section('title') @lang('headers.skus') @endsection
 
 @section('header_styles')
 @endsection
@@ -21,7 +21,7 @@
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
-    <h2>СКУ</h2>
+    <h2>@lang('headers.skus')</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('sku.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>

@@ -1,12 +1,12 @@
 @extends('../admin/main')
 
-@section('title') Свойство @endsection
+@section('title') @lang('headers.property') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-    <h2>Свойство {{ $property->name_ru }}/{{ $property->name_en }}</h2>
+    <h2>@lang('headers.property') {{ $property->name }}</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('property.index') }}">@lang('btn.return_to_properties')</a>
     <table class="table table-striped table-hover">
         <tr>

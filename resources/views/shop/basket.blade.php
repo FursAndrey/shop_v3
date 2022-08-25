@@ -1,6 +1,6 @@
 @extends('../shop/main')
 
-@section('title') Корзина @endsection
+@section('title') @lang('headers.basket') @endsection
 
 @section('content')
     @if ($message = Session::get('success'))
@@ -18,7 +18,7 @@
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
-    <h2>Корзина</h2>
+    <h2>@lang('headers.basket')</h2>
     <table class="table table-striped table-hover">
         <tr>
             <th>@lang('tables.id_sku')</th>

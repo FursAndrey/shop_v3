@@ -1,12 +1,12 @@
 @extends('../admin/main')
 
-@section('title') Создние @endsection
+@section('title') @lang('headers.create_sku_for') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-    <h2>Создние СКУ продукта {{ $product->name_ru.'/'.$product->name_en }}</h2>
+    <h2>@lang('headers.create_sku_for') {{ $product->name }}</h2>
     <form action="{{ route('sku.store') }}" method="POST">
         <input type="hidden" name="product_id" value="{{ $product->id }}">
         <div class="mb-3">
@@ -37,10 +37,10 @@
         @isset($product)
             @foreach ($product->properties as $property)
                 <div class="mb-3">
-                    <label for="property_option_id" class="form-label">Свойство {{ $property->name_ru }}/{{ $property->name_en }}</label>
+                    <label for="property_option_id" class="form-label">Свойство {{ $property->name }}</label>
                     <select name="property_option_id[]" class="form-select" id="property_option_id">
                         @foreach ($property->propertyOptions as $propertyOption)
-                        <option value="{{ $propertyOption->id }}" {{ (isset($sku) && $sku->property_option_id == $propertyOption->id)? 'selected': '' }}>{{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}</option>
+                        <option value="{{ $propertyOption->id }}" {{ (isset($sku) && $sku->property_option_id == $propertyOption->id)? 'selected': '' }}>{{ $propertyOption->name }}</option>
                         @endforeach
                     </select>
                     @error('property_option_id')

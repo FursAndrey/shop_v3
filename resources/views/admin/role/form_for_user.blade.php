@@ -1,18 +1,18 @@
 @extends('../admin/main')
 
-@section('title') Добавление роли @endsection
+@section('title') @lang('headers.add_role') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-    <h2>Добавление роли для {{ $user->name }}</h2>
+    <h2>@lang('headers.add_role_for') {{ $user->name }}</h2>
     <form action="{{ route('role.add_role', $user) }}" method="POST">
         <div class="mb-3">
             <label for="role_id" class="form-label">@lang('tables.roles')</label>
             <select name="role_id" class="form-select" id="role_id">
                 @foreach ($roles as $role)
-                <option value="{{ $role->id }}">{{ $role->name_ru }}/{{ $role->name_en }}</option>
+                <option value="{{ $role->id }}">{{ $role->name }}</option>
                 @endforeach
             </select>
             @error('role_id')

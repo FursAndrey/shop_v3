@@ -1,17 +1,17 @@
 @extends('../admin/main')
 
-@section('title') Создние/Редактирование валюты @endsection
+@section('title') @lang('headers.create_update_currency') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
     @if (isset($currency))
-        <h2>Редактирование валюты {{ $currency->code }}</h2>
+        <h2>@lang('headers.update_currency') {{ $currency->code }}</h2>
         <form action="{{ route('currency.update', $currency) }}" method="POST">
             @method('PUT')
     @else
-        <h2>Создние валюты</h2>
+        <h2>@lang('headers.create_currency')</h2>
         <form action="{{ route('currency.store') }}" method="POST">
     @endif
         <div class="mb-3">

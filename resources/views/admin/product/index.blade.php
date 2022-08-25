@@ -1,6 +1,6 @@
 @extends('../admin/main')
 
-@section('title') Продукты @endsection
+@section('title') @lang('headers.products') @endsection
 
 @section('header_styles')
 @endsection
@@ -21,7 +21,7 @@
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
-    <h2>Продукты</h2>
+    <h2>@lang('headers.products')</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('product.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>

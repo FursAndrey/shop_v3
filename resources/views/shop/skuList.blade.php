@@ -1,6 +1,6 @@
 @extends('../shop/main')
 
-@section('title') Главная страница @endsection
+@section('title') @lang('headers.home_page') @endsection
 
 @section('content')
     @if ($message = Session::get('success'))
@@ -18,7 +18,7 @@
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
-    <h2 class="text-center">Каталог товаров</h2>
+    <h2 class="text-center">@lang('headers.catalog')</h2>
     <div class="container">
         <div class="row">
             @foreach ($skus as $sku)

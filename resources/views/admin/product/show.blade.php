@@ -1,12 +1,12 @@
 @extends('../admin/main')
 
-@section('title') Продукт @endsection
+@section('title') @lang('headers.product') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-    <h2>Продукт {{ $product->name }}</h2>
+    <h2>@lang('headers.product') {{ $product->name }}</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('product.index') }}">@lang('btn.return_to_products')</a>
     <table class="table table-striped table-hover">
         <tr>

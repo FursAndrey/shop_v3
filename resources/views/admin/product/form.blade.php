@@ -1,17 +1,17 @@
 @extends('../admin/main')
 
-@section('title') Создние/Редактирование продукта @endsection
+@section('title') @lang('headers.create_update_product') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
     @if (isset($product))
-        <h2>Редактирование продукта {{ $product->code }}</h2>
+        <h2>@lang('headers.update_product') {{ $product->code }}</h2>
         <form action="{{ route('product.update', $product) }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
     @else
-        <h2>Создние продукта</h2>
+        <h2>@lang('headers.create_product')</h2>
         <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
     @endif
         <div class="mb-3">

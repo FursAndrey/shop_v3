@@ -1,17 +1,17 @@
 @extends('../admin/main')
 
-@section('title') Создние/Редактирование значения свойства @endsection
+@section('title') @lang('headers.create_update_option') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
     @if (isset($propertyOption))
-        <h2>Редактирование значения свойства {{ $propertyOption->name_ru }}/{{ $propertyOption->name_en }}</h2>
+        <h2>@lang('headers.update_option') {{ $propertyOption->name }}</h2>
         <form action="{{ route('property_option.update', $propertyOption) }}" method="POST">
             @method('PUT')
     @else
-        <h2>Создние значения свойства</h2>
+        <h2>@lang('headers.create_option')</h2>
         <form action="{{ route('property_option.store') }}" method="POST">
     @endif
         <div class="mb-3">
@@ -32,7 +32,7 @@
             <label for="property_id" class="form-label">@lang('tables.name')</label>
             <select name="property_id" class="form-select" id="property_id">
                 @foreach ($properties as $property)
-                <option value="{{ $property->id }}" {{ (isset($propertyOption) && $propertyOption->property_id == $property->id)? 'selected': '' }}>{{ $property->id }} - {{ $property->name_ru.'/'.$property->name_en }}</option>
+                <option value="{{ $property->id }}" {{ (isset($propertyOption) && $propertyOption->property_id == $property->id)? 'selected': '' }}>{{ $property->name }}</option>
                 @endforeach
             </select>
             @error('property_id')

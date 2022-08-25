@@ -1,17 +1,17 @@
 @extends('../admin/main')
 
-@section('title') Создние/Редактирование свойства @endsection
+@section('title') @lang('headers.create_update_property') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
     @if (isset($property))
-        <h2>Редактирование свойства {{ $property->code }}</h2>
+        <h2>@lang('headers.update_property') {{ $property->code }}</h2>
         <form action="{{ route('property.update', $property) }}" method="POST">
             @method('PUT')
     @else
-        <h2>Создние свойства</h2>
+        <h2>@lang('headers.create_property')</h2>
         <form action="{{ route('property.store') }}" method="POST">
     @endif
         <div class="mb-3">

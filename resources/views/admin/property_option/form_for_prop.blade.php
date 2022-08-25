@@ -1,12 +1,12 @@
 @extends('../admin/main')
 
-@section('title') Создние значения для свойства @endsection
+@section('title') @lang('headers.create_option_for') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-        <h2>Создние значения для свойства {{ $property->name_ru.'/'.$property->name_en }}</h2>
+        <h2>@lang('headers.create_option_for') {{ $property->name }}</h2>
         <form action="{{ route('property_option.store') }}" method="POST">
         <div class="mb-3">
             <label for="name_ru" class="form-label">@lang('tables.name_ru')</label>

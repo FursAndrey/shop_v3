@@ -1,12 +1,12 @@
 @extends('../admin/main')
 
-@section('title') Создние продукта @endsection
+@section('title') @lang('headers.create_product') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-    <h2>Создние продукта для категории {{ $category->name_ru.'/'.$category->name_en }}</h2>
+    <h2>@lang('headers.create_product_for') {{ $category->name }}</h2>
     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="name_ru" class="form-label">@lang('tables.name_ru')</label>

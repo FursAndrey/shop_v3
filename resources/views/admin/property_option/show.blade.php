@@ -1,12 +1,12 @@
 @extends('../admin/main')
 
-@section('title') Значение свойства @endsection
+@section('title') @lang('headers.option') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-    <h2>Значение свойства {{ $propertyOption->name }}</h2>
+    <h2>@lang('headers.option') {{ $propertyOption->name }}</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('property_option.index') }}">@lang('btn.return_to_options')</a>
     <table class="table table-striped table-hover">
         <tr>

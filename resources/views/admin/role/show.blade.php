@@ -1,12 +1,12 @@
 @extends('../admin/main')
 
-@section('title') Роль @endsection
+@section('title') @lang('headers.role') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
-    <h2>Роль {{ $role->name_ru }}/{{ $role->name_en }}</h2>
+    <h2>@lang('headers.role') {{ $role->name }}</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('role.index') }}">@lang('btn.return_to_roles')</a>
     <table class="table table-striped table-hover">
         <tr>

@@ -1,9 +1,9 @@
 @extends('../shop/main')
 
-@section('title') Подтверждение заказа @endsection
+@section('title') @lang('headers.confirm_order') @endsection
 
 @section('content')
-    <h2 class="text-center">Подтверждение заказа</h2>
+    <h2 class="text-center">@lang('headers.confirm_order')</h2>
     <div class="container">
         <form action="{{ route('confirmOrder') }}" method="post">
             <div class="mb-4">

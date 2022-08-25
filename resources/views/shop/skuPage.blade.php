@@ -1,9 +1,9 @@
 @extends('../shop/main')
 
-@section('title') Карта товара @endsection
+@section('title') @lang('headers.sku_cart') @endsection
 
 @section('content')
-    <h2 class="text-center">Карта товара</h2>
+    <h2 class="text-center">@lang('headers.sku_cart')</h2>
     <div class="container">
         <div class="row">
             <div class="col-3">

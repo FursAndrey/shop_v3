@@ -1,17 +1,17 @@
 @extends('../admin/main')
 
-@section('title') Создние/Редактирование категории @endsection
+@section('title') @lang('headers.create_update_category') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
     @if (isset($category))
-        <h2>Редактирование категории {{ $category->name }}</h2>
+        <h2>@lang('headers.update_category') {{ $category->name }}</h2>
         <form action="{{ route('category.update', $category) }}" method="POST">
             @method('PUT')
     @else
-        <h2>Создние категории</h2>
+        <h2>@lang('headers.create_category')</h2>
         <form action="{{ route('category.store') }}" method="POST">
     @endif
         <div class="mb-3">

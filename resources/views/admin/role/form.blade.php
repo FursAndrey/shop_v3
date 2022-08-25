@@ -1,17 +1,17 @@
 @extends('../admin/main')
 
-@section('title') Создние/Редактирование роли @endsection
+@section('title') @lang('headers.create_update_role') @endsection
 
 @section('header_styles')
 @endsection
 
 @section('content')
     @if (isset($role))
-        <h2>Редактирование роли {{ $role->code }}</h2>
+        <h2>@lang('headers.update_role') {{ $role->code }}</h2>
         <form action="{{ route('role.update', $role) }}" method="POST">
             @method('PUT')
     @else
-        <h2>Создние роли</h2>
+        <h2>@lang('headers.create_role')</h2>
         <form action="{{ route('role.store') }}" method="POST">
     @endif
         <div class="mb-3">

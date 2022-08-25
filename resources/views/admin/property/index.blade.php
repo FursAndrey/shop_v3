@@ -1,6 +1,6 @@
 @extends('../admin/main')
 
-@section('title') Свойства @endsection
+@section('title') @lang('headers.properties') @endsection
 
 @section('header_styles')
 @endsection
@@ -21,7 +21,7 @@
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
-    <h2>Свойства</h2>
+    <h2>@lang('headers.properties')</h2>
     <a class="btn btn-success mt-2 mb-2" href="{{ route('property.create') }}">@lang('btn.create')</a>
     <table class="table table-striped table-hover">
         <tr>
