@@ -37,15 +37,14 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        Category::create([
+        $category = Category::create([
             'name_ru' => $request->name_ru,
             'name_en' => $request->name_en,
             'code' => $request->code,
             'description_ru' => $request->description_ru,
             'description_en' => $request->description_en,
         ]);
-        $txt = 'Категория '.$request->name_ru.'/'.$request->name_en.' добавлена.';
-        return redirect()->route('category.index')->with('success', $txt);
+        return redirect()->route('category.index')->with('success', __('flushes.category_added', ['category' => $category->name]));
     }
 
     /**
@@ -80,8 +79,7 @@ class CategoriesController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         $category->update($request->all());
-        $txt = 'Категория '.$category->name_ru.'/'.$category->name_en.' обновлена.';
-        return redirect()->route('category.index')->with('warning', $txt);
+        return redirect()->route('category.index')->with('warning', __('flushes.category_updated', ['category' => $category->name]));
     }
 
     /**
@@ -92,8 +90,7 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        $txt = 'Категория '.$category->name_ru.'/'.$category->name_en.' удалена.';
         $category->delete();
-        return redirect()->route('category.index')->with('danger', $txt);
+        return redirect()->route('category.index')->with('danger', __('flushes.category_deleted', ['category' => $category->name]));
     }
 }

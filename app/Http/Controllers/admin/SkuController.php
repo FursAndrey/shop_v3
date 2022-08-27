@@ -53,8 +53,7 @@ class SkuController extends Controller
         if ($request->has('property_option_id')) {
             $sku->property_options()->sync($request->property_option_id);
         }
-        $txt = 'СКУ добавлено.';
-        return redirect()->route('sku.index')->with('success', $txt);
+        return redirect()->route('sku.index')->with('success', __('flushes.sku_added', ['sku' => $sku->id]));
     }
 
     /**
@@ -99,8 +98,7 @@ class SkuController extends Controller
     {
         $sku->update($request->all());
         $sku->property_options()->sync($request->property_option_id);
-        $txt = 'СКУ '.$sku->id.' обновлено.';
-        return redirect()->route('sku.index')->with('warning', $txt);
+        return redirect()->route('sku.index')->with('warning', __('flushes.sku_updated', ['sku' => $sku->id]));
     }
 
     /**
@@ -111,9 +109,8 @@ class SkuController extends Controller
      */
     public function destroy(Sku $sku)
     {
-        $txt = 'СКУ '.$sku->id.' удалено.';
         $sku->delete();
-        return redirect()->route('sku.index')->with('danger', $txt);
+        return redirect()->route('sku.index')->with('danger', __('flushes.sku_deleted', ['sku' => $sku->id]));
     }
     
     /**

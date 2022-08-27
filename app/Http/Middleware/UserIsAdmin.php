@@ -20,7 +20,7 @@ class UserIsAdmin
     {
         if(is_null($request->user())) {
             //если пользователь не авторизован - на главную
-            session()->flash('warning', 'Требуется авторизация');
+            session()->flash('warning', __('flushes.required_auth'));
             return redirect()->route('skuListPage');
         }
         $this_user_id = $request->user()->id;
@@ -32,7 +32,7 @@ class UserIsAdmin
             }
         }
         //если роль АДМИН не найдена - на главную
-        session()->flash('warning', 'Нет прав администратора');
+        session()->flash('warning', __('flushes.access_denied'));
         return redirect()->route('skuListPage');
     }
 }

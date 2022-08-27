@@ -55,8 +55,7 @@ class ProductController extends Controller
             $product->properties()->sync($request->property_id);
         }
 
-        $txt = 'Продукт '.$request->name_ru.'/'.$request->name_en.' добавлен.';
-        return redirect()->route('product.index')->with('success', $txt);
+        return redirect()->route('product.index')->with('success', __('flushes.product_added', ['product' => $product->name]));
     }
 
     /**
@@ -113,8 +112,7 @@ class ProductController extends Controller
         if (!is_null($oldImage) && file_exists($oldImage)) {
             unlink($oldImage);
         }
-        $txt = 'Продукт '.$request->name_ru.'/'.$request->name_en.' изменен.';
-        return redirect()->route('product.index')->with('warning', $txt);
+        return redirect()->route('product.index')->with('warning', __('flushes.product_updated', ['product' => $product->name]));
     }
 
     /**
@@ -129,14 +127,14 @@ class ProductController extends Controller
             $product->delete();
         } catch (Throwable $e) {
             if ($e->errorInfo[0] == 23000 && $e->errorInfo[1] == 1451) {
-                return redirect()->route('product.index')->withDanger('Не удается удалить продукт '.$product->name_ru.'/'.$product->name_en);
+                return redirect()->route('product.index')->withDanger(__('flushes.product_not_deleted', ['product' => $product->name]));
             }
         }
         
         if (file_exists($product->img_for_delete)) {
             unlink($product->img_for_delete);
         }
-        return redirect()->route('product.index')->withDanger('Продукт '.$product->name_ru.'/'.$product->name_en.' удален');
+        return redirect()->route('product.index')->withDanger(__('flushes.product_deleted', ['product' => $product->name]));
     }
     
     /**

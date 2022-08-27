@@ -39,9 +39,8 @@ class PropertyOptionController extends Controller
      */
     public function store(PropertyOptionsRequest $request)
     {
-        PropertyOption::create($request->all());
-        $txt = 'Значение свойства '.$request->name_ru.'/'.$request->name_en.' добавлено.';
-        return redirect()->route('property.index')->with('success', $txt);
+        $propertyOption = PropertyOption::create($request->all());
+        return redirect()->route('property.index')->with('success', __('flushes.option_added', ['option' => $propertyOption->name]));
     }
 
     /**
@@ -83,8 +82,7 @@ class PropertyOptionController extends Controller
     public function update(PropertyOptionsRequest $request, PropertyOption $propertyOption)
     {
         $propertyOption->update($request->all());
-        $txt = 'Значение свойства '.$propertyOption->name_ru.'/'.$propertyOption->name_en.' обновлено.';
-        return redirect()->route('property_option.index')->with('warning', $txt);
+        return redirect()->route('property_option.index')->with('warning', __('flushes.option_updated', ['option' => $propertyOption->name]));
     }
 
     /**
@@ -95,9 +93,8 @@ class PropertyOptionController extends Controller
      */
     public function destroy(PropertyOption $propertyOption)
     {
-        $txt = 'Значение свойства '.$propertyOption->name_ru.'/'.$propertyOption->name_en.' удалено.';
         $propertyOption->delete();
-        return redirect()->route('property_option.index')->with('danger', $txt);
+        return redirect()->route('property_option.index')->with('danger', __('flushes.option_deleted', ['option' => $propertyOption->name]));
     }
     
     /**

@@ -37,9 +37,8 @@ class CurrencyController extends Controller
      */
     public function store(CurrencyRequest $request)
     {
-        Currency::create($request->all());
-        $txt = 'Валюта '.$request->code.' добавлена.';
-        return redirect()->route('currency.index')->with('success', $txt);
+        $currency = Currency::create($request->all());
+        return redirect()->route('currency.index')->with('success', __('flushes.currency_added', ['currency' => $currency->code]));
     }
 
     /**
@@ -74,8 +73,7 @@ class CurrencyController extends Controller
     public function update(CurrencyRequest $request, Currency $currency)
     {
         $currency->update($request->all());
-        $txt = 'Категория '.$currency->code.' обновлена.';
-        return redirect()->route('currency.index')->with('warning', $txt);
+        return redirect()->route('currency.index')->with('warning', __('flushes.currency_updated', ['currency' => $currency->code]));
     }
 
     /**
@@ -86,8 +84,7 @@ class CurrencyController extends Controller
      */
     public function destroy(Currency $currency)
     {
-        $txt = 'Валюта '.$currency->code.' удалена.';
         $currency->delete();
-        return redirect()->route('currency.index')->with('danger', $txt);
+        return redirect()->route('currency.index')->with('danger', __('flushes.currency_deleted', ['currency' => $currency->code]));
     }
 }

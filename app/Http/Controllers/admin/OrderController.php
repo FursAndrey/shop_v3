@@ -33,14 +33,12 @@ class OrderController extends Controller
     public function cencel(Order $order)
     {
         $order->update(['status' => 2]);
-        $txt = 'Заказ '.$order->id.' отменен.';
-        return redirect()->route('order.index')->with('warning', $txt);
+        return redirect()->route('order.index')->with('warning', __('flushes.order_cenceled', ['order' => $order->id]));
     }
     
     public function success(Order $order)
     {
         $order->update(['status' => 1]);
-        $txt = 'Заказ '.$order->id.' выдан.';
-        return redirect()->route('order.index')->with('success', $txt);
+        return redirect()->route('order.index')->with('success', __('flushes.order_complited', ['order' => $order->id]));
     }
 }

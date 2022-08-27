@@ -37,9 +37,8 @@ class PropertyController extends Controller
      */
     public function store(PropertyRequest $request)
     {
-        Property::create($request->all());
-        $txt = 'Свойство '.$request->name_ru.'/'.$request->name_en.' добавлено.';
-        return redirect()->route('property.index')->with('success', $txt);
+        $property = Property::create($request->all());
+        return redirect()->route('property.index')->with('success', __('flushes.property_added', ['property' => $property->name]));
     }
 
     /**
@@ -74,8 +73,7 @@ class PropertyController extends Controller
     public function update(PropertyRequest $request, Property $property)
     {
         $property->update($request->all());
-        $txt = 'Свойство '.$property->name_ru.'/'.$property->name_en.' обновлено.';
-        return redirect()->route('property.index')->with('warning', $txt);
+        return redirect()->route('property.index')->with('warning', __('flushes.property_updated', ['property' => $property->name]));
     }
 
     /**
@@ -86,8 +84,7 @@ class PropertyController extends Controller
      */
     public function destroy(Property $property)
     {
-        $txt = 'Свойство '.$property->name_ru.'/'.$property->name_en.' удалено.';
         $property->delete();
-        return redirect()->route('property.index')->with('danger', $txt);
+        return redirect()->route('property.index')->with('danger', __('flushes.property_deleted', ['property' => $property->name]));
     }
 }

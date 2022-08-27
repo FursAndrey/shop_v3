@@ -23,8 +23,7 @@ class BasketController extends Controller
             $basket = session('basket');
             return view('shop.basket', compact('basket', 'currencies'));
         } else {
-            $txt = 'Корзина пуста';
-            return redirect()->route('skuListPage', compact('currencies'))->with('danger', $txt);
+            return redirect()->route('skuListPage', compact('currencies'))->with('danger', __('flushes.empty_basket'));
         }
     }
 
@@ -35,22 +34,22 @@ class BasketController extends Controller
             //если существует - увеличить кол-во
             if ($sku->countInBasket < $sku->count) {
                 $basket[$sku->id]->countInBasket++;
-                $txt = 'СКУ '.$sku->id.' добавлено в корзину';
                 $messageType = 'success';
+                $name_flush = 'sku_added_to_basket';
             } else {
-                $txt = 'СКУ '.$sku->id.' не доступен для заказа в большем объеме';
                 $messageType = 'danger';
+                $name_flush = 'sku_not_available_in_more';
             }
         } else {
             //иначе - создать
             $sku->countInBasket = 1;
             $basket[$sku->id] = $sku;
-            $txt = 'СКУ '.$sku->id.' добавлено в корзину';
             $messageType = 'success';
+            $name_flush = 'sku_added_to_basket';
         }
         session(['basket' => $basket]);
         
-        return redirect()->route('showBasket')->with($messageType, $txt);
+        return redirect()->route('showBasket')->with($messageType, __("flushes.$name_flush", ['sku' => $sku->id]));
     }
 
     public function removeFromBasket(Sku $sku)
@@ -65,8 +64,7 @@ class BasketController extends Controller
         }
         session(['basket' => $basket]);
 
-        $txt = 'СКУ '.$sku->id.' удалено из корзины';
-        return redirect()->route('showBasket')->with('warning', $txt);
+        return redirect()->route('showBasket')->with('warning', __('flushes.sku_deleted_from_basket', ['sku' => $sku->id]));
     }
 
     public function remuveThisSkuFromBasket(Sku $sku)
@@ -75,16 +73,14 @@ class BasketController extends Controller
         unset($basket[$sku->id]);
         session(['basket' => $basket]);
 
-        $txt = 'СКУ '.$sku->id.' полностью удалено из корзины';
-        return redirect()->route('showBasket')->with('warning', $txt);
+        return redirect()->route('showBasket')->with('warning', __('flushes.sku_deleted_from_basket_at_all', ['sku' => $sku->id]));
     }
 
     public function clearBasket()
     {
         $currencies = CurrencyConversion::getCurrencies();
         session()->forget('basket');
-        $txt = 'Корзина очищена';
-        return redirect()->route('skuListPage', compact('currencies'))->with('danger', $txt);
+        return redirect()->route('skuListPage', compact('currencies'))->with('danger', __('flushes.basket_cleared'));
     }
 
     public function confirmOrderForm()
@@ -94,8 +90,7 @@ class BasketController extends Controller
             $basket = session('basket');
             return view('shop.confirmOrder', compact('basket', 'currencies'));
         } else {
-            $txt = 'Корзина пуста';
-            return redirect()->route('skuListPage', compact('currencies'))->with('danger', $txt);
+            return redirect()->route('skuListPage', compact('currencies'))->with('danger', __('flushes.empty_basket'));
         }
     }
 
@@ -113,8 +108,7 @@ class BasketController extends Controller
 
                 $sku = Sku::find($skuInOrder->id);
                 if ($sku->count < $skuInOrder->countInBasket) {
-                    $txt = 'Заказ не доступен в полном объеме.';
-                    return redirect()->route('showBasket')->with('danger', $txt);
+                    return redirect()->route('showBasket')->with('danger', __('flushes.order_not_available'));
                 }
                 //цена не должна обновляться
                 unset($sku->price);
@@ -171,12 +165,9 @@ class BasketController extends Controller
             }
 
             return redirect()->route('checkShow', $order);
-            // $txt = 'Заказ '.$order->id.' подтвержден.';
-            // return redirect()->route('skuListPage')->with('success', $txt);
         } else {
             $currencies = CurrencyConversion::getCurrencies();
-            $txt = 'Корзина пуста';
-            return redirect()->route('skuListPage', compact('currencies'))->with('danger', $txt);
+            return redirect()->route('skuListPage', compact('currencies'))->with('danger', __('flushes.empty_basket'));
         }
     }
 

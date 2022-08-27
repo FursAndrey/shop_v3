@@ -39,9 +39,8 @@ class RoleController extends Controller
      */
     public function store(RoleRequest $request)
     {
-        Role::create($request->all());
-        $txt = 'Роль '.$request->name_ru.'/'.$request->name_en.' добавлена.';
-        return redirect()->route('role.index')->with('success', $txt);
+        $role = Role::create($request->all());
+        return redirect()->route('role.index')->with('success', __('flushes.role_added', ['role' => $role->name]));
     }
 
     /**
@@ -76,8 +75,7 @@ class RoleController extends Controller
     public function update(RoleRequest $request, Role $role)
     {
         $role->update($request->all());
-        $txt = 'Роль '.$request->name_ru.'/'.$request->name_en.' обновлена.';
-        return redirect()->route('role.index')->with('warning', $txt);
+        return redirect()->route('role.index')->with('warning', __('flushes.role_updated', ['role' => $role->name]));
     }
 
     /**
@@ -88,9 +86,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        $txt = 'Роль '.$role->name_ru.'/'.$role->name_en.' удалена.';
         $role->delete();
-        return redirect()->route('role.index')->with('danger', $txt);
+        return redirect()->route('role.index')->with('danger', __('flushes.role_deleted', ['role' => $role->name]));
     }
     
     public function create_for_user(User $user)
@@ -101,8 +98,8 @@ class RoleController extends Controller
 
     public function add_role(Request $request, User $user)
     {
+        $role = Role::find($request->role_id)->get()[0];
         $user->roles()->sync($request->role_id);
-        $txt = 'Пользователю добавлена новая роль';
-        return redirect()->route('user.index')->with('danger', $txt);
+        return redirect()->route('user.index')->with('success', __('flushes.role_added_for_user', ['user' => $user->name, 'role' => $role->name]));
     }
 }
