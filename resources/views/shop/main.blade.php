@@ -22,27 +22,27 @@
             <a @route_active('category.index') href="{{ route('category.index') }}">@lang('btn.admin_panel')</a>
             @endauth
             @guest
-                <a href="{{ route('login') }}" @route_active('login')>@lang('btn.login')</a>
+                <a href="{{ route('login') }}" class="btn btn-success">@lang('btn.login')</a>
             @endguest
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                     @csrf
-                    <button type="submit" title="Выйти" @route_active('logout')>@lang('btn.logout')</button>
+                    <button type="submit" title="Выйти" class="btn btn-danger">@lang('btn.logout')</button>
                 </form>
             @endauth
             <div class="head-menu">
-                <a @route_active('#') href="#">{{ session('currency', 'BYN') }}</a>
+                <a class="m-2 btn btn-info" href="#">{{ session('currency', 'BYN') }}</a>
                 <ul>
                     @foreach ($currencies as $currency)
-                        <li><a @route_active('setCurrency') href="{{ route('setCurrency', $currency->code) }}">{{ $currency->code }}</a></li>
+                        <li><a class="m-2 btn btn-info" href="{{ route('setCurrency', $currency->code) }}">{{ $currency->code }}</a></li>
                     @endforeach
                 </ul>
             </div>
             <div class="head-menu">
-                <a @route_active('#') href="#">{{ strtoupper(session('locale', 'RU')) }}</a>
+                <a class="m-2 btn btn-info" href="#">{{ strtoupper(session('locale', 'RU')) }}</a>
                 <ul>
-                    <li><a @route_active('setLocale') href="{{ route('setLocale', 'ru') }}">RU</a></li>
-                    <li><a @route_active('setLocale') href="{{ route('setLocale', 'en') }}">EN</a></li>
+                    <li><a class="m-2 btn btn-info" href="{{ route('setLocale', 'ru') }}">RU</a></li>
+                    <li><a class="m-2 btn btn-info" href="{{ route('setLocale', 'en') }}">EN</a></li>
                 </ul>
             </div>
         </div>

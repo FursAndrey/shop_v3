@@ -27,19 +27,19 @@
             <a @route_active('user.index') href="{{ route('user.index') }}">@lang('btn.users')</a>
             <a @route_active('order.index') href="{{ route('order.index') }}">@lang('btn.orders')</a>
             @guest
-                <a href="{{ route('login') }}" @route_active('login')>@lang('btn.login')</a>
+                <a href="{{ route('login') }}" class="btn btn-success">@lang('btn.login')</a>
             @endguest
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                     @csrf
-                    <button type="submit" title="Выйти" @route_active('logout')>@lang('btn.logout')</button>
+                    <button type="submit" title="Выйти" class="btn btn-danger">@lang('btn.logout')</button>
                 </form>
             @endauth
             <div class="head-menu">
-                <a @route_active('#') href="#">{{ strtoupper(session('locale', 'RU')) }}</a>
+                <a class="m-2 btn btn-info" href="#">{{ strtoupper(session('locale', 'RU')) }}</a>
                 <ul>
-                    <li><a @route_active('setLocale') href="{{ route('setLocale', 'ru') }}">RU</a></li>
-                    <li><a @route_active('setLocale') href="{{ route('setLocale', 'en') }}">EN</a></li>
+                    <li><a class="m-2 btn btn-info" href="{{ route('setLocale', 'ru') }}">RU</a></li>
+                    <li><a class="m-2 btn btn-info" href="{{ route('setLocale', 'en') }}">EN</a></li>
                 </ul>
             </div>
         </div>
