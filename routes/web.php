@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PropertyOptionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SkuController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ResetController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,8 @@ Route::middleware('changeLocale')->group(function () {
         Route::get('orders/show/{order}', [OrderController::class, 'show'])->name('order.show');
         Route::delete('orders/{order}', [OrderController::class, 'cencel'])->name('order.cencel');
         Route::post('orders/{order}', [OrderController::class, 'success'])->name('order.success');
+
+        Route::get('/reset/project', [ResetController::class, 'resetProject'])->name('resetProject');
     });
 
     Route::get('/', [PageController::class, 'skuList'])->name('skuListPage');

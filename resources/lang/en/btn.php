@@ -44,4 +44,5 @@ return [
     'return_to_categories' => 'Return to categories',
     'return_to_currencies' => 'Return to currencies',
     'return_to_orders' => 'Return to orders',
+    'reset' => 'Reset this project',
 ];

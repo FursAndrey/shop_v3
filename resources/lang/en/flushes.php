@@ -45,4 +45,6 @@ return [
     
     'required_auth' => 'Required auth.',
     'access_denied' => 'Access denied.',
+
+    'resetProject' => 'The project was reset.',
 ];

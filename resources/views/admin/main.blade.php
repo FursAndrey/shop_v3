@@ -26,6 +26,7 @@
             <a @route_active('role.index') href="{{ route('role.index') }}">@lang('btn.roles')</a>
             <a @route_active('user.index') href="{{ route('user.index') }}">@lang('btn.users')</a>
             <a @route_active('order.index') href="{{ route('order.index') }}">@lang('btn.orders')</a>
+            <a class="btn btn-warning" href="{{ route('resetProject') }}">@lang('btn.reset')</a>
             @guest
                 <a href="{{ route('login') }}" class="btn btn-success">@lang('btn.login')</a>
             @endguest
