@@ -125,7 +125,7 @@ class BasketController extends Controller
             //сохраняем инф. о заказанных продуктах
             $orderedProduct['order_id'] = $order->id;
             foreach ($basket as $skuInOrder) {
-                $orderedProduct['sku_id'] = $skuInOrder->id;
+                $orderedProduct['sku_id'] = $skuInOrder->id_for_view;
                 $orderedProduct['name_ru'] = $skuInOrder->product->name_ru;
                 $orderedProduct['name_en'] = $skuInOrder->product->name_en;
                 $orderedProduct['count'] = $skuInOrder->countInBasket;
@@ -138,17 +138,12 @@ class BasketController extends Controller
                     $orderedProperty['property_name_ru'] = $property->name_ru;
                     $orderedProperty['property_name_en'] = $property->name_en;
                     if (isset($sku->property_options)) {
-                        //хз как правильно
-                        if ($sku->property_options[0]->property->id == $property->id) {
-                            $orderedProperty['option_name_ru'] = $sku->property_options[0]->name_ru;
-                            $orderedProperty['option_name_en'] = $sku->property_options[0]->name_en;
+                        foreach ($sku->property_options as $propertyOption) {
+                            if ($propertyOption->property->id == $property->id) {
+                                $orderedProperty['option_name_ru'] = $propertyOption->name_ru;
+                                $orderedProperty['option_name_en'] = $propertyOption->name_en;
+                            }
                         }
-                        // foreach ($sku->property_options as $propertyOption) {
-                        //     if ($propertyOption->property->id == $property->id) {
-                        //         $orderedProperty['option_name_ru'] = $propertyOption->name_ru;
-                        //         $orderedProperty['option_name_en'] = $propertyOption->name_en;
-                        //     }
-                        // }
                     } else {
                         $orderedProperty['option_name_ru'] = '-';
                         $orderedProperty['option_name_en'] = '-';
