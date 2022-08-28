@@ -26,11 +26,7 @@ class Product extends Model
     
     public function getImgForDeleteAttribute()
     {
-        if ($this->img == 'test.jpg') {
-            return 'no_delete_this_file';
-        } else {
-            return public_path('/storage/uploads/'.str_replace('/', '\\', $this->img));
-        }
+        return public_path('/storage/uploads/'.str_replace('/', '\\', $this->img));
     }
     
     public function getImgForViewAttribute()

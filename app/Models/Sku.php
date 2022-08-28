@@ -48,4 +48,12 @@ class Sku extends Model
     {
         return CurrencyConversion::getCurCode();
     }
+
+    public function getIdForViewAttribute()
+    {
+        while (strlen($this->attributes['id']) < 4) {
+            $this->attributes['id'] = '0'.$this->attributes['id'];
+        }
+        return 'A'.$this->attributes['id'];
+    }
 }

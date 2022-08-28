@@ -7,7 +7,7 @@
 
 @section('content')
     @if (isset($sku))
-        <h2>@lang('headers.update_sku') {{ $sku->id }}</h2>
+        <h2>@lang('headers.update_sku') {{ $sku->id_for_view }}</h2>
         <form action="{{ route('sku.update', $sku) }}" method="POST">
             @method('PUT')
     @else

@@ -37,7 +37,7 @@
             <td>@lang('tables.id_sku')</td>
             <td>
                 @foreach ($product->skus as $sku)
-                    {{ $sku->id }}<br/>
+                    {{ $sku->id_for_view }}<br/>
                 @endforeach
             </td>
         </tr>

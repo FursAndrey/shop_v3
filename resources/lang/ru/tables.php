@@ -29,7 +29,6 @@ return [
     'id_order' => '№ заказа',
     'total_price' => 'Сумма заказа',
     'status' => 'Статус',
-    'currency' => 'Валюта',
     'category' => 'Категория',
     'no_more_than' => 'не более',
 ];

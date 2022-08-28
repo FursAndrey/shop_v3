@@ -39,7 +39,7 @@
                 $totalPrice += $priceInBasket;
             @endphp
             <tr>
-                <td>{{ $sku->id }}</td>
+                <td>{{ $sku->id_for_view }}</td>
                 <td>
                     <p><a href="{{ route('sku.show', $sku) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 100px;"></a></p>
                     <p><a href="{{ route('sku.show', $sku) }}" class="btn btn-info">{{ $sku->product->name }}</a></p>

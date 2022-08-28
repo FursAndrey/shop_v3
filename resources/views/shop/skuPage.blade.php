@@ -11,7 +11,7 @@
             </div>
             <div class="col-9">
                 <h4>{{ $sku->product->name }}</h4>
-                <p>@lang('tables.id_sku'): {{ $sku->id }}</p>
+                <p>@lang('tables.id_sku'): {{ $sku->id_for_view }}</p>
                 <p>{{ $sku->product->description }}</p>
                 <p>{{ $sku->price }} {{ $sku->cur_code }}</p>
                 @if ($sku->count > 0)

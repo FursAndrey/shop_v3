@@ -36,7 +36,7 @@
         </tr>
         @foreach ($skus as $sku)
             <tr>
-                <td><a href="{{ route('sku.show', $sku) }}" class="btn btn-info">{{ $sku->id }}</a></td>
+                <td><a href="{{ route('sku.show', $sku) }}" class="btn btn-info">{{ $sku->id_for_view }}</a></td>
                 <td>{{ $sku->product->name }}</td>
                 <td>{{ $sku->price }}</td>
                 <td>{{ $sku->currency->code }}</td>

@@ -10,7 +10,7 @@
     <form action="{{ route('sku.store') }}" method="POST">
         <input type="hidden" name="product_id" value="{{ $product->id }}">
         <div class="mb-3">
-            <label for="currency_id" class="form-label">@lang('tables.product')</label>
+            <label for="currency_id" class="form-label">@lang('tables.currency')</label>
             <select name="currency_id" class="form-select" id="currency_id">
                 @foreach ($currencies as $currency)
                 <option value="{{ $currency->id }}">{{ $currency->code }}</option>
