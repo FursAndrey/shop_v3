@@ -50,9 +50,8 @@ Route::middleware('changeLocale')->group(function () {
         Route::get('orders/show/{order}', [OrderController::class, 'show'])->name('order.show');
         Route::delete('orders/{order}', [OrderController::class, 'cencel'])->name('order.cencel');
         Route::post('orders/{order}', [OrderController::class, 'success'])->name('order.success');
-
-        Route::get('/reset/project', [ResetController::class, 'resetProject'])->name('resetProject');
     });
+    Route::get('/reset/project', [ResetController::class, 'resetProject'])->name('resetProject');
 
     Route::get('/', [PageController::class, 'skuList'])->name('skuListPage');
     Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage');

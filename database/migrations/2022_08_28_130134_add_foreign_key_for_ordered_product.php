@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeSkuIdForOrderedId extends Migration
+class AddForeignKeyForOrderedProduct extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class ChangeSkuIdForOrderedId extends Migration
     public function up()
     {
         Schema::table('ordered_products', function (Blueprint $table) {
-            $table->string('sku_id', 5)->change();
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
@@ -26,7 +26,8 @@ class ChangeSkuIdForOrderedId extends Migration
     public function down()
     {
         Schema::table('ordered_products', function (Blueprint $table) {
-            $table->bigInteger('sku_id')->unsigned()->change();
+            $table->dropForeign(['order_id']);
+            $table->dropIndex('ordered_products_order_id_foreign');
         });
     }
 }
