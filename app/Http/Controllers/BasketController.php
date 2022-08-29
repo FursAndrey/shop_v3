@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
+use App\Models\Category;
 use App\Models\OrderedProduct;
 use App\Models\OrderedProperty;
 use App\Models\Sku;
@@ -18,12 +19,13 @@ class BasketController extends Controller
 {
     public function showBasket()
     {
+        $categories = Category::get();
         $currencies = CurrencyConversion::getCurrencies();
         if (session('basket')) {
             $basket = session('basket');
-            return view('shop.basket', compact('basket', 'currencies'));
+            return view('shop.basket', compact('basket', 'currencies', 'categories'));
         } else {
-            return redirect()->route('skuListPage', compact('currencies'))->with('danger', __('flushes.empty_basket'));
+            return redirect()->route('skuListPage', compact('currencies', 'categories'))->with('danger', __('flushes.empty_basket'));
         }
     }
 

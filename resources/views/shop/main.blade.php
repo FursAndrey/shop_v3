@@ -17,6 +17,14 @@
     <body class="m-3">
         <div>
             <a @route_active('skuListPage') href="{{ route('skuListPage') }}">@lang('btn.home')</a>
+            <div class="head-menu">
+                <a class="m-2 btn btn-info" href="#">@lang('btn.categories')</a>
+                <ul>
+                    @foreach ($categories as $category)
+                        <li><a class="btn btn-info" href="{{ route('skuListPage', $category) }}">{{ $category->name }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
             <a @route_active('showBasket') href="{{ route('showBasket') }}">@lang('btn.basket')</a>
             @auth
             <a @route_active('category.index') href="{{ route('category.index') }}">@lang('btn.admin_panel')</a>
@@ -34,15 +42,15 @@
                 <a class="m-2 btn btn-info" href="#">{{ session('currency', 'BYN') }}</a>
                 <ul>
                     @foreach ($currencies as $currency)
-                        <li><a class="m-2 btn btn-info" href="{{ route('setCurrency', $currency->code) }}">{{ $currency->code }}</a></li>
+                        <li><a class="btn btn-info" href="{{ route('setCurrency', $currency->code) }}">{{ $currency->code }}</a></li>
                     @endforeach
                 </ul>
             </div>
             <div class="head-menu">
                 <a class="m-2 btn btn-info" href="#">{{ strtoupper(session('locale', 'RU')) }}</a>
                 <ul>
-                    <li><a class="m-2 btn btn-info" href="{{ route('setLocale', 'ru') }}">RU</a></li>
-                    <li><a class="m-2 btn btn-info" href="{{ route('setLocale', 'en') }}">EN</a></li>
+                    <li><a class="btn btn-info" href="{{ route('setLocale', 'ru') }}">RU</a></li>
+                    <li><a class="btn btn-info" href="{{ route('setLocale', 'en') }}">EN</a></li>
                 </ul>
             </div>
         </div>

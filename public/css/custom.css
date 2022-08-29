@@ -10,9 +10,14 @@
     margin: 0; 
     padding: 0; 
     top: 46px; 
-    left: 0; 
+    left: 7px; 
     display: none; 
-    background: #b8d8df;
+    background: #fff;
+}
+
+.head-menu > ul > li > a {
+    width: 100%;
+    margin: 5px auto;
 }
 
 .head-menu:hover > ul {

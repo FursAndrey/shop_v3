@@ -53,7 +53,6 @@ Route::middleware('changeLocale')->group(function () {
     });
     Route::get('/reset/project', [ResetController::class, 'resetProject'])->name('resetProject');
 
-    Route::get('/', [PageController::class, 'skuList'])->name('skuListPage');
     Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage');
 
     Route::get('/basket', [BasketController::class, 'showBasket'])->name('showBasket');
@@ -69,5 +68,6 @@ Route::middleware('changeLocale')->group(function () {
     Route::get('/basket/checkShow/{order}', [BasketController::class, 'checkShow'])->name('checkShow');
     Route::get('/basket/checkLoad/{order}', [BasketController::class, 'checkLoad'])->name('checkLoad');
 
+    Route::get('/{category?}', [PageController::class, 'skuList'])->name('skuListPage');
     require __DIR__.'/auth.php';
 });
