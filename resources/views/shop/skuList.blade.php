@@ -22,9 +22,15 @@
         <div class="row flex-nowrap">
             <div class="col-auto px-0">
                 <div id="sidebar" class="collapse collapse-horizontal show border-end">
-                    <form id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+                    <form method="GET" action="{{ route('skuListPage', $category) }}" id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
                         <p class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><span>Цена</span></p>
-                        <p>Цена1Цена2Цена3Цена4Цена5</p>
+                        <div class="me-3">
+                            <p>
+                                <input type="text" class="js-range-slider" name="price_filter" value=""/>
+                            </p>
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Подобрать</button>
+                        </div>
                     </form>
                 </div>
             </div>

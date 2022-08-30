@@ -10,6 +10,8 @@
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset("favicon.ico") }}">
 		
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <!--Plugin CSS file with desired skin-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/ion.rangeSlider.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/custom.css') }}">
 		<!-- all css here -->
         @yield('header_styles')
@@ -58,5 +60,9 @@
 		<!-- all js here -->
         @yield('footer_script')
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <!--jQuery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{{ asset('/js/ion.rangeSlider.js') }}"></script>
+        <script src="{{ asset('/js/custom.js') }}"></script>
     </body>
 </html>

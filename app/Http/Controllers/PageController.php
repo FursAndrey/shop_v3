@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\App;
 
 class PageController extends Controller
 {
-    public function skuList(Category $category = null)
+    public function skuList(Request $request, Category $category = null)
     {
+        $price_filter = $request->price_filter;
         $categories = Category::get();
         $currencies = CurrencyConversion::getCurrencies();
         
@@ -20,9 +21,16 @@ class PageController extends Controller
             $skusQuery->join('products', 'products.id', '=', 'skus.product_id');
             $skusQuery->where('category_id', '=', $category->id);
         }
+        if (!is_null($price_filter) && preg_match('/^[0-9]+\;[0-9]+$/', $price_filter)) {
+            $price_filter_ar = explode(';', $price_filter);
+            if ($price_filter_ar[0] <= $price_filter_ar[1]) {
+                $skusQuery->where('price', '>=', $price_filter_ar[0]);
+                $skusQuery->where('price', '<=', $price_filter_ar[1]);
+            }
+        }
         $skus = $skusQuery->paginate(8);
         
-        return view('shop.skuList', compact('skus', 'currencies', 'categories'));
+        return view('shop.skuList', compact('skus', 'currencies', 'categories', 'category'));
     }
 
     public function skuPage(int $sku_id)
