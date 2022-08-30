@@ -23,3 +23,8 @@
 .head-menu:hover > ul {
     display: inline-block;
 }
+
+#sidebar-nav{
+    width: 200px;
+    overflow: hidden;
+}

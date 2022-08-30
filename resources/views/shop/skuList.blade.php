@@ -18,27 +18,43 @@
             <p class="text-center">{{ $message }}</p>
         </div>
     @endif
-    <h2 class="text-center">@lang('headers.catalog')</h2>
-    <div class="container">
-        <div class="row">
-            @foreach ($skus as $sku)
-                <div class="col-3 mb-5 mt-3">
-                    <a href="{{ route('skuPage', $sku->id) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 200px;"></a>
-                    <h4><a href="{{ route('skuPage', $sku->id) }}" class="mt-2 btn btn-info">{{ $sku->product->name }}</a></h4>
-                    <p>{{ $sku->price }} {{ $sku->cur_code }}</p>
-                    @if ($sku->count > 0)
-                        <form action="{{ route('addToBasket', $sku) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-success" title="@lang('btn.add_to_basket')">
-                                @lang('btn.add_to_basket')
-                            </button>
-                        </form>
-                    @else
-                        <p class="text-danger border border-danger p-1 d-inline">@lang('btn.not_available_for_order')</p>
-                    @endif
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto px-0">
+                <div id="sidebar" class="collapse collapse-horizontal show border-end">
+                    <form id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+                        <p class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><span>Цена</span></p>
+                        <p>Цена1Цена2Цена3Цена4Цена5</p>
+                    </form>
                 </div>
-            @endforeach
+            </div>
+            <main class="col ps-md-2 pt-2">
+                <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse" class="text-success border border-success p-1 text-decoration-none">Фильтры</a>
+                <div class="page-header pt-3">
+                    <h2>@lang('headers.catalog')</h2>
+                </div>
+                <hr>
+                <div class="row">
+                    @foreach ($skus as $sku)
+                        <div class="col-3 mb-5 mt-3">
+                            <a href="{{ route('skuPage', $sku->id) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 200px;"></a>
+                            <h4><a href="{{ route('skuPage', $sku->id) }}" class="mt-2 btn btn-info">{{ $sku->product->name }}</a></h4>
+                            <p>{{ $sku->price }} {{ $sku->cur_code }}</p>
+                            @if ($sku->count > 0)
+                                <form action="{{ route('addToBasket', $sku) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success" title="@lang('btn.add_to_basket')">
+                                        @lang('btn.add_to_basket')
+                                    </button>
+                                </form>
+                            @else
+                                <p class="text-danger border border-danger p-1 d-inline">@lang('btn.not_available_for_order')</p>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+                {{ $skus->links() }}
+            </main>
         </div>
-      </div>
-    {{ $skus->links() }}
+    </div>
 @endsection
