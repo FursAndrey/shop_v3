@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sku;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\MyServices\CurrencyConversion;
 use Illuminate\Support\Facades\App;
@@ -16,10 +17,16 @@ class PageController extends Controller
         $categories = Category::get();
         $currencies = CurrencyConversion::getCurrencies();
         
-        $skusQuery = Sku::with(['product', 'currency', 'product.category']);
+        $skusQuery = Sku::with(['product', 'currency', 'product.category', 'property_options', 'property_options.property']);
         if (!is_null($category)) {
-            $skusQuery->join('products', 'products.id', '=', 'skus.product_id');
-            $skusQuery->where('category_id', '=', $category->id);
+            //костыль, но идеи лучше пока нет
+            $productsThisCategory = Product::select('id')->where('category_id', '=', $category->id)->get()->toArray();
+            $prodArr = [];
+            foreach ($productsThisCategory as $product) {
+                $prodArr[] = $product['id'];
+            }
+            
+            $skusQuery->whereIn('product_id', $prodArr);
         }
         if (!is_null($price_filter) && preg_match('/^[0-9]+\;[0-9]+$/', $price_filter)) {
             $price_filter_ar = explode(';', $price_filter);

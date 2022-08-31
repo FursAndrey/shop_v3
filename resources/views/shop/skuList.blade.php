@@ -22,7 +22,7 @@
         <div class="row flex-nowrap">
             <div class="col-auto px-0">
                 <div id="sidebar" class="collapse collapse-horizontal show border-end">
-                    <form method="GET" action="{{ route('skuListPage', $category) }}" id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+                    <form method="POST" action="{{ route('skuListForm', $category) }}" id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
                         <p class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><span>@lang('tables.price')</span></p>
                         <div class="me-3">
                             <p>
@@ -43,9 +43,18 @@
                 <hr>
                 <div class="row">
                     @foreach ($skus as $sku)
+                        {{-- @dump($sku) --}}
                         <div class="col-3 mb-5 mt-3">
                             <a href="{{ route('skuPage', $sku->id) }}"><img src="{{ $sku->product->img_for_view }}" alt="изображение не добавлено" style="max-width: 200px;"></a>
                             <h4><a href="{{ route('skuPage', $sku->id) }}" class="mt-2 btn btn-info">{{ $sku->product->name }}</a></h4>
+                            <div>
+                                @foreach ($sku->property_options as $propertyOption)
+                                    <p>
+                                        {{ $propertyOption->property->name }}:
+                                        {{ $propertyOption->name }}
+                                    </p>
+                                @endforeach
+                            </div>
                             <p>{{ $sku->price }} {{ $sku->cur_code }}</p>
                             @if ($sku->count > 0)
                                 <form action="{{ route('addToBasket', $sku) }}" method="POST">
