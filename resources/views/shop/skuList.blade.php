@@ -23,19 +23,20 @@
             <div class="col-auto px-0">
                 <div id="sidebar" class="collapse collapse-horizontal show border-end">
                     <form method="GET" action="{{ route('skuListPage', $category) }}" id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
-                        <p class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><span>Цена</span></p>
+                        <p class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><span>@lang('tables.price')</span></p>
                         <div class="me-3">
                             <p>
                                 <input type="text" class="js-range-slider" name="price_filter" value=""/>
                             </p>
                             @csrf
-                            <button type="submit" class="btn btn-primary">Подобрать</button>
+                            <button type="submit" class="btn btn-success w-100">@lang('btn.apply')</button>
+                            <a href="{{ route('skuListPage') }}" class="btn btn-warning mt-2 w-100">@lang('btn.cancel')</a>
                         </div>
                     </form>
                 </div>
             </div>
             <main class="col ps-md-2 pt-2">
-                <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse" class="text-success border border-success p-1 text-decoration-none">Фильтры</a>
+                <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse" class="text-success border border-success p-1 text-decoration-none">@lang('btn.filters')</a>
                 <div class="page-header pt-3">
                     <h2>@lang('headers.catalog')</h2>
                 </div>
