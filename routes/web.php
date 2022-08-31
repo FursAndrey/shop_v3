@@ -39,35 +39,37 @@ Route::middleware('changeLocale')->group(function () {
         Route::resource('property_option', PropertyOptionController::class);
         Route::resource('sku', SkuController::class);
         Route::resource('role', RoleController::class);
-        Route::get('property_option/create_for_property/{property}', [PropertyOptionController::class, 'create_for_property'])->name('property_option.create_for_property');
-        Route::get('product/create_for_category/{category}', [ProductController::class, 'create_for_category'])->name('product.create_for_category');
-        Route::get('sku/create_for_product/{product}', [SkuController::class, 'create_for_product'])->name('sku.create_for_product');
+        Route::get('property_option/create_for_property/{property}', [PropertyOptionController::class, 'create_for_property'])->name('property_option.create_for_property')->where('property', '[0-9]+');
+        Route::get('product/create_for_category/{category}', [ProductController::class, 'create_for_category'])->name('product.create_for_category')->where('category', '[0-9]+');
+        Route::get('sku/create_for_product/{product}', [SkuController::class, 'create_for_product'])->name('sku.create_for_product')->where('product', '[0-9]+');
         Route::get('user/index', [UserController::class, 'index'])->name('user.index');
-        Route::get('user/show/{user}', [UserController::class, 'show'])->name('user.show');
-        Route::get('role/create_for_user/{user}', [RoleController::class, 'create_for_user'])->name('role.create_for_user');
-        Route::post('role/add_role/{user}', [RoleController::class, 'add_role'])->name('role.add_role');
+        Route::get('user/show/{user}', [UserController::class, 'show'])->name('user.show')->where('user', '[0-9]+');
+        Route::get('role/create_for_user/{user}', [RoleController::class, 'create_for_user'])->name('role.create_for_user')->where('user', '[0-9]+');
+        Route::post('role/add_role/{user}', [RoleController::class, 'add_role'])->name('role.add_role')->where('user', '[0-9]+');
         Route::get('orders', [OrderController::class, 'index'])->name('order.index');
-        Route::get('orders/show/{order}', [OrderController::class, 'show'])->name('order.show');
-        Route::delete('orders/{order}', [OrderController::class, 'cencel'])->name('order.cencel');
-        Route::post('orders/{order}', [OrderController::class, 'success'])->name('order.success');
+        Route::get('orders/show/{order}', [OrderController::class, 'show'])->name('order.show')->where('order', '[0-9]+');
+        Route::delete('orders/{order}', [OrderController::class, 'cencel'])->name('order.cencel')->where('order', '[0-9]+');
+        Route::post('orders/{order}', [OrderController::class, 'success'])->name('order.success')->where('order', '[0-9]+');
     });
+    Route::get('/{category?}', [PageController::class, 'skuList'])->name('skuListPage')->where('category', '[0-9]+');
+    Route::post('/{category?}', [PageController::class, 'skuList'])->name('skuListForm')->where('category', '[0-9]+');
+
     Route::get('/reset/project', [ResetController::class, 'resetProject'])->name('resetProject');
 
-    Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage');
+    Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage')->where('sku_id', '[0-9]+');
 
     Route::get('/basket', [BasketController::class, 'showBasket'])->name('showBasket');
-    Route::post('/basket/add/{sku}', [BasketController::class, 'addToBasket'])->name('addToBasket');
-    Route::post('/basket/remove/{sku}', [BasketController::class, 'removeFromBasket'])->name('removeFromBasket');
-    Route::delete('/basket/remuveThisSku/{sku}', [BasketController::class, 'remuveThisSkuFromBasket'])->name('remuveThisSkuFromBasket');
+    Route::post('/basket/add/{sku}', [BasketController::class, 'addToBasket'])->name('addToBasket')->where('sku', '[0-9]+');
+    Route::post('/basket/remove/{sku}', [BasketController::class, 'removeFromBasket'])->name('removeFromBasket')->where('sku', '[0-9]+');
+    Route::delete('/basket/remuveThisSku/{sku}', [BasketController::class, 'remuveThisSkuFromBasket'])->name('remuveThisSkuFromBasket')->where('sku', '[0-9]+');
     Route::delete('/basket/clear', [BasketController::class, 'clearBasket'])->name('clearBasket');
     Route::get('/basket/confirm', [BasketController::class, 'confirmOrderForm'])->name('confirmOrderForm');
     Route::post('/basket/confirm', [BasketController::class, 'confirmOrder'])->name('confirmOrder');
-    Route::get('/setCur/{currencyCode}', [PageController::class, 'setCurrency'])->name('setCurrency');
-    Route::get('/setLocale/{locale}', [PageController::class, 'setLocale'])->name('setLocale');
+    Route::get('/setCur/{currencyCode}', [PageController::class, 'setCurrency'])->name('setCurrency')->where('currencyCode', '[A-Z]{3}');
+    Route::get('/setLocale/{locale}', [PageController::class, 'setLocale'])->name('setLocale')->where('locale', '[A-Za-z]{2}');
 
     Route::get('/basket/checkShow/{order}', [BasketController::class, 'checkShow'])->name('checkShow');
     Route::get('/basket/checkLoad/{order}', [BasketController::class, 'checkLoad'])->name('checkLoad');
 
-    Route::get('/{category?}', [PageController::class, 'skuList'])->name('skuListPage');
     require __DIR__.'/auth.php';
 });
