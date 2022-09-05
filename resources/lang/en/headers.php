@@ -59,6 +59,7 @@ return [
     'confirm_order' => 'Confirm order',
 
     'sku_cart' => 'SKU cart',
+    'product_cart' => 'Product cart',
 
     'home_page' => 'Home page',
 

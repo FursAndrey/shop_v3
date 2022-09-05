@@ -53,10 +53,13 @@ Route::middleware('changeLocale')->group(function () {
     });
     Route::get('/{category?}', [PageController::class, 'skuList'])->name('skuListPage')->where('category', '[0-9]+');
     Route::post('/{category?}', [PageController::class, 'skuList'])->name('skuListForm')->where('category', '[0-9]+');
+    Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage')->where('sku_id', '[0-9]+');
 
     Route::get('/reset/project', [ResetController::class, 'resetProject'])->name('resetProject');
-
-    Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage')->where('sku_id', '[0-9]+');
+    
+    Route::get('/productList/{category?}', [PageController::class, 'productList'])->name('productListPage')->where('category', '[0-9]+');
+    Route::post('/productList/{category?}', [PageController::class, 'productList'])->name('productListForm')->where('category', '[0-9]+');
+    Route::get('/product/{product_id}', [PageController::class, 'productPage'])->name('productPage')->where('product_id', '[0-9]+');
 
     Route::get('/basket', [BasketController::class, 'showBasket'])->name('showBasket');
     Route::post('/basket/add/{sku}', [BasketController::class, 'addToBasket'])->name('addToBasket')->where('sku', '[0-9]+');

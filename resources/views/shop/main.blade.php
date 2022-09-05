@@ -19,6 +19,7 @@
     <body class="m-3">
         <div class="mb-4">
             <a @route_active('skuListPage') href="{{ route('skuListPage') }}">@lang('btn.home')</a>
+            <a @route_active('productListPage') href="{{ route('productListPage') }}">@lang('btn.home_v2')</a>
             <div class="head-menu">
                 <a class="m-2 btn btn-info" href="#">@lang('btn.categories')</a>
                 <ul>

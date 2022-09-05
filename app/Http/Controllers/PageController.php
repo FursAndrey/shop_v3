@@ -61,4 +61,46 @@ class PageController extends Controller
         return redirect()->back();
     }
     
+    public function productList(Request $request, Category $category = null)
+    {
+        $price_filter = $request->price_filter;
+        $categories = Category::get();
+        $currencies = CurrencyConversion::getCurrencies();
+
+        $productsQuery = Product::with(['skus', 'skus.currency', 'category', 'skus.property_options', 'skus.property_options.property']);
+        if (!is_null($category)) {
+            $productsQuery->where('category_id', '=', $category->id);
+        }
+        
+        if (!is_null($price_filter) && preg_match('/^[0-9]+\;[0-9]+$/', $price_filter)) {
+            $price_filter_ar = explode(';', $price_filter);
+            if ($price_filter_ar[0] <= $price_filter_ar[1]) {
+                $skus = Sku::select('id')->whereBetween('price', [$price_filter_ar[0], $price_filter_ar[1]])->get();
+            }
+            $skuArr = [];
+            foreach ($skus as $sku) {
+                $skuArr[] = $sku['id'];
+            }
+            
+            $productsQuery->join('skus', 'skus.product_id', '=', 'products.id')->whereIn('skus.id', $skuArr)->select('products.*')->distinct();
+        }
+        $products = $productsQuery->paginate(8);
+        
+        return view('shop.productList', compact('products', 'currencies', 'categories', 'category'));
+    }
+
+    public function productPage(int $product_id)
+    {
+        $categories = Category::get();
+        $currencies = CurrencyConversion::getCurrencies();
+        $product = Product::where('id', '=', $product_id)->get();
+
+        //костыль
+        foreach ($product as $tmp) {}
+        $product = $tmp;
+
+        $skus = Sku::where('product_id', '=', $product_id)->get();
+
+        return view('shop.productPage', compact('skus', 'currencies', 'categories', 'product'));
+    }
 }

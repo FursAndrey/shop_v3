@@ -20,6 +20,7 @@ return [
     'rate' => 'Rate',
     'img' => 'Image',
     'sku' => 'SKU',
+    'skus' => 'SKUS',
     'currency' => 'Currency',
     'property' => 'Property',
     'option' => 'Option',

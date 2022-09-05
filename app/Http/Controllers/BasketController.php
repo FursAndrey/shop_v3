@@ -87,10 +87,11 @@ class BasketController extends Controller
 
     public function confirmOrderForm()
     {
+        $categories = Category::get();
         $currencies = CurrencyConversion::getCurrencies();
         if (session('basket')) {
             $basket = session('basket');
-            return view('shop.confirmOrder', compact('basket', 'currencies'));
+            return view('shop.confirmOrder', compact('basket', 'currencies', 'categories'));
         } else {
             return redirect()->route('skuListPage', compact('currencies'))->with('danger', __('flushes.empty_basket'));
         }

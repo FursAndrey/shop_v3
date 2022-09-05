@@ -2,6 +2,7 @@
 
 return [
     'home' => 'Home',
+    'home_v2' => 'Home (product)',
     'basket' => 'Basket',
     'login' => 'Login',
     'logout' => 'Logout',
