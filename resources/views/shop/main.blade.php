@@ -30,7 +30,7 @@
             </div>
             <a @route_active('showBasket') href="{{ route('showBasket') }}">@lang('btn.basket')</a>
             @auth
-            <a @route_active('category.index') href="{{ route('category.index') }}">@lang('btn.admin_panel')</a>
+                <a @route_active('sku.index') href="{{ route('sku.index') }}">@lang('btn.admin_panel')</a>
             @endauth
             @guest
                 <a href="{{ route('login') }}" class="btn btn-success">@lang('btn.login')</a>

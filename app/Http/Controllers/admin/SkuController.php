@@ -8,8 +8,6 @@ use App\Models\Currency;
 use App\Models\Product;
 use App\Models\Sku;
 
-use Illuminate\Support\Str;
-
 class SkuController extends Controller
 {
     /**
@@ -18,8 +16,8 @@ class SkuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $skus = Sku::with(['product','currency'])->paginate(15);
+    {        
+        $skus = Sku::with(['product', 'currency', 'property_options', 'property_options.property', 'product.properties'])->paginate(15);
         return view('admin.sku.index', compact('skus'));
     }
 

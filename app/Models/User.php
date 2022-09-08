@@ -46,4 +46,16 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+    public function isAdmin()
+    {
+        $isAdmin = false;
+        foreach ($this->roles AS $role) {
+            if ($role->id == \App\Http\Middleware\UserIsAdmin::ADMIN_ROLE_ID) {
+                $isAdmin = true;
+                break;
+            }
+        }
+        return $isAdmin;
+    }
 }

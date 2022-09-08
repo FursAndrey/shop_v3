@@ -6,9 +6,9 @@ use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 
-class UserIsAdmin
+class UserIsSeller
 {
-    const ADMIN_ROLE_ID = 1;
+    const SELLER_ROLE_IDS = [1, 2];
     /**
      * Handle an incoming request.
      *
@@ -26,7 +26,8 @@ class UserIsAdmin
         $this_user_id = $request->user()->id;
         $this_user = User::with('roles')->find($this_user_id);
         foreach ($this_user->roles as $role) {
-            if ($role->id == self::ADMIN_ROLE_ID) {
+            //идеи лучше поканет
+            if (in_array($role->id, self::SELLER_ROLE_IDS)) {
                 //если у пользователя есть роль АДМИН - пропустить
                 return $next($request);
             }

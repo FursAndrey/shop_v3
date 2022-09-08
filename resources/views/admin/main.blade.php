@@ -16,17 +16,21 @@
     </head>
     <body class="m-3">
         <div>
-            <a @route_active('skuListPage') href="{{ route('skuListPage') }}">@lang('btn.home')</a>
-            <a @route_active('currency.index') href="{{ route('currency.index') }}">@lang('btn.currencies')</a>
-            <a @route_active('category.index') href="{{ route('category.index') }}">@lang('btn.categories')</a>
-            <a @route_active('product.index') href="{{ route('product.index') }}">@lang('btn.products')</a>
+            @if((Illuminate\Support\Facades\Auth::user())->isAdmin())
+                <a @route_active('skuListPage') href="{{ route('skuListPage') }}">@lang('btn.home')</a>
+                <a @route_active('currency.index') href="{{ route('currency.index') }}">@lang('btn.currencies')</a>
+                <a @route_active('category.index') href="{{ route('category.index') }}">@lang('btn.categories')</a>
+                <a @route_active('product.index') href="{{ route('product.index') }}">@lang('btn.products')</a>
+            @endif
             <a @route_active('sku.index') href="{{ route('sku.index') }}">@lang('btn.skus')</a>
-            <a @route_active('property.index') href="{{ route('property.index') }}">@lang('btn.properties')</a>
-            <a @route_active('property_option.index') href="{{ route('property_option.index') }}">@lang('btn.options')</a>
-            <a @route_active('role.index') href="{{ route('role.index') }}">@lang('btn.roles')</a>
-            <a @route_active('user.index') href="{{ route('user.index') }}">@lang('btn.users')</a>
-            <a @route_active('order.index') href="{{ route('order.index') }}">@lang('btn.orders')</a>
-            <a class="btn btn-warning" href="{{ route('resetProject') }}">@lang('btn.reset')</a>
+            @if((Illuminate\Support\Facades\Auth::user())->isAdmin())
+                <a @route_active('property.index') href="{{ route('property.index') }}">@lang('btn.properties')</a>
+                <a @route_active('property_option.index') href="{{ route('property_option.index') }}">@lang('btn.options')</a>
+                <a @route_active('role.index') href="{{ route('role.index') }}">@lang('btn.roles')</a>
+                <a @route_active('user.index') href="{{ route('user.index') }}">@lang('btn.users')</a>
+                <a @route_active('order.index') href="{{ route('order.index') }}">@lang('btn.orders')</a>
+                <a class="btn btn-warning" href="{{ route('resetProject') }}">@lang('btn.reset')</a>
+            @endif
             @guest
                 <a href="{{ route('login') }}" class="btn btn-success">@lang('btn.login')</a>
             @endguest

@@ -31,13 +31,16 @@ Route::middleware('changeLocale')->group(function () {
         return redirect()->route('skuListPage');
     })->middleware(['userIsAdmin'])->name('dashboard');
 
+    
+    Route::prefix('admin')->middleware('userIsSeller')->group(function () {
+        Route::resource('sku', SkuController::class);
+    });
     Route::prefix('admin')->middleware('userIsAdmin')->group(function () {
         Route::resource('category', CategoriesController::class);
         Route::resource('currency', CurrencyController::class);
         Route::resource('product', ProductController::class);
         Route::resource('property', PropertyController::class);
         Route::resource('property_option', PropertyOptionController::class);
-        Route::resource('sku', SkuController::class);
         Route::resource('role', RoleController::class);
         Route::get('property_option/create_for_property/{property}', [PropertyOptionController::class, 'create_for_property'])->name('property_option.create_for_property')->where('property', '[0-9]+');
         Route::get('product/create_for_category/{category}', [ProductController::class, 'create_for_category'])->name('product.create_for_category')->where('category', '[0-9]+');
