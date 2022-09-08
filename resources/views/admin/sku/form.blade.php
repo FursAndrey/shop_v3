@@ -25,7 +25,8 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        <div class="mb-3">
+        <input type="hidden" name="currency_id" value="1">
+        {{-- <div class="mb-3">
             <label for="currency_id" class="form-label">@lang('tables.currency')</label>
             <select name="currency_id" class="form-select" id="currency_id">
                 @foreach ($currencies as $currency)
@@ -35,7 +36,7 @@
             @error('currency_id')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-        </div>
+        </div> --}}
         <div class="mb-3">
             <label for="price" class="form-label">@lang('tables.price_for_once')</label>
             @error('price')

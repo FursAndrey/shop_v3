@@ -16,8 +16,8 @@
     </head>
     <body class="m-3">
         <div>
+            <a @route_active('skuListPage') href="{{ route('skuListPage') }}">@lang('btn.home')</a>
             @if((Illuminate\Support\Facades\Auth::user())->isAdmin())
-                <a @route_active('skuListPage') href="{{ route('skuListPage') }}">@lang('btn.home')</a>
                 <a @route_active('currency.index') href="{{ route('currency.index') }}">@lang('btn.currencies')</a>
                 <a @route_active('category.index') href="{{ route('category.index') }}">@lang('btn.categories')</a>
                 <a @route_active('product.index') href="{{ route('product.index') }}">@lang('btn.products')</a>
