@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Sku;
+use App\Observers\SkuObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,5 +40,8 @@ class AppServiceProvider extends ServiceProvider
                 }
             ?>";
         });
+
+        //подписка на рассылку при поступлнии товара
+        Sku::observe(SkuObserver::class);
     }
 }

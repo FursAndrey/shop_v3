@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Sku;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Subscribtion;
 use Illuminate\Http\Request;
 use App\MyServices\CurrencyConversion;
 use Illuminate\Support\Facades\App;
+use App\Http\Requests\SubscribtionRequest;
 
 class PageController extends Controller
 {
@@ -102,5 +104,17 @@ class PageController extends Controller
         $skus = Sku::where('product_id', '=', $product_id)->get();
 
         return view('shop.productPage', compact('skus', 'currencies', 'categories', 'product'));
+    }
+
+    public function subscribtion(SubscribtionRequest $request, int $sku_id)
+    {
+        Subscribtion::create(
+            [
+                'email' => $request->email, 
+                'sku_id' => $sku_id,
+            ]
+        );
+
+        return redirect()->route('skuListPage')->with('success', __('flushes.subscribtion'));;
     }
 }

@@ -57,6 +57,7 @@ Route::middleware('changeLocale')->group(function () {
     Route::get('/{category?}', [PageController::class, 'skuList'])->name('skuListPage')->where('category', '[0-9]+');
     Route::post('/{category?}', [PageController::class, 'skuList'])->name('skuListForm')->where('category', '[0-9]+');
     Route::get('/sku/{sku_id}', [PageController::class, 'skuPage'])->name('skuPage')->where('sku_id', '[0-9]+');
+    Route::post('/subscribtion/{sku_id}', [PageController::class, 'subscribtion'])->name('subscribtion')->where('sku_id', '[0-9]+');
 
     Route::get('/reset/project', [ResetController::class, 'resetProject'])->name('resetProject');
     

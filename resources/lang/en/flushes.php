@@ -47,4 +47,5 @@ return [
     'access_denied' => 'Access denied.',
 
     'resetProject' => 'The project was reset.',
+    'subscribtion' => 'Thank you, we will notify you when the item arrives.',
 ];

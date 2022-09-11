@@ -49,4 +49,5 @@ return [
     'filters' => 'Filters',
     'apply' => 'Apply',
     'cancel' => 'Cancel',
+    'subscribtion' => 'Notify when items arrive',
 ];
