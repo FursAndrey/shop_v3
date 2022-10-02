@@ -29,13 +29,13 @@ Route::middleware('changeLocale')->group(function () {
 
     Route::get('/dashboard', function () {
         return redirect()->route('skuListPage');
-    })->middleware(['userIsAdmin'])->name('dashboard');
+    })->middleware(['userIsAdmin:admin'])->name('dashboard');
 
     
-    Route::prefix('admin')->middleware('userIsSeller')->group(function () {
+    Route::prefix('admin')->middleware(['userIsAdmin:admin,seller'])->group(function () {
         Route::resource('sku', SkuController::class);
     });
-    Route::prefix('admin')->middleware('userIsAdmin')->group(function () {
+    Route::prefix('admin')->middleware(['userIsAdmin:admin'])->group(function () {
         Route::resource('category', CategoriesController::class);
         Route::resource('currency', CurrencyController::class);
         Route::resource('product', ProductController::class);

@@ -5,10 +5,10 @@ namespace App\Http\Middleware;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserIsAdmin
 {
-    const ADMIN_ROLE_ID = 1;
     /**
      * Handle an incoming request.
      *
@@ -16,22 +16,13 @@ class UserIsAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (is_null($request->user())) {
-            //если пользователь не авторизован - на главную
-            session()->flash('warning', __('flushes.required_auth'));
-            return redirect()->route('skuListPage');
+        if (!is_null(Auth::user()) && Auth::user()->hasAnyRole($roles)) {
+            return $next($request);
         }
-        $this_user_id = $request->user()->id;
-        $this_user = User::with('roles')->find($this_user_id);
-        foreach ($this_user->roles as $role) {
-            if ($role->id == self::ADMIN_ROLE_ID) {
-                //если у пользователя есть роль АДМИН - пропустить
-                return $next($request);
-            }
-        }
-        //если роль АДМИН не найдена - на главную
+
+        //если у пльзователя нет нужных ролей - на главную
         session()->flash('warning', __('flushes.access_denied'));
         return redirect()->route('skuListPage');
     }
